@@ -1,0 +1,707 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01B7E2ECA75D024E9CA742B9 /* mosquitto_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 41DA99D13F3C942158BEA50A /* mosquitto_internal.h */; };
+		01BC31FB66CA9BDC2A93EF57 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = F6ADF0A6D6DC25982166DA43 /* config.h */; };
+		04623A872C1F6D545D125A47 /* CBMessageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 85127AD6C66FBAB67B1E7A21 /* CBMessageClient.h */; };
+		0477545013FADC9671C02B71 /* Pods-ClearBlade-iOS-API-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F25E8113EA93DA310C3D8197 /* Pods-ClearBlade-iOS-API-dummy.m */; };
+		09392CBA7A7B6EA4F0790F16 /* CBMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5ADDB0BBA4BD903C2A612104 /* CBMessage.h */; };
+		09F8EFD45E76BC2B7BEB6A34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0AABA92CDB33826F7A8F248 /* Foundation.framework */; };
+		0A6D853FB0415F1486ECB89B /* tls_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 658B9F03651DB27FACF19D45 /* tls_mosq.h */; };
+		106D7147C3AEEACBBE687689 /* thread_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 306D7820AEB3759048DD2689 /* thread_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		13768AB3073C34B02AEEA300 /* will_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C22FDEF35C1A70863CBC808 /* will_mosq.h */; };
+		19B8E6E8D3DEE4ACF45CBADA /* CBItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1099A5BCB44703A57884F898 /* CBItem.h */; };
+		19ECD61A875FBF96AC916DDF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D0C9B2A7AF665FCA5B4EF50 /* SystemConfiguration.framework */; };
+		2070253F2654CF329BAA3AF5 /* memory_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 9403E027A74A0FA1800808EE /* memory_mosq.h */; };
+		208B96A94DFA845A6B35C475 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3F982A7FA7BA6BFBFFA753 /* Security.framework */; };
+		284F200B490B0028170AE0CB /* CBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9106C097A7A821F5BC75C2A5 /* CBUser.h */; };
+		2AFE37B6EBEE6D0F515E68F4 /* send_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = FACD58ABC795B033672F8652 /* send_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		2EC4A325183AA2E6657AF575 /* CBAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = E0EB986F965E6FEF7DB16E78 /* CBAPI.h */; };
+		315D472588A714D1A11341BC /* CBCode.h in Headers */ = {isa = PBXBuildFile; fileRef = C0A2983FA913776067B04980 /* CBCode.h */; };
+		322B03254FA83C69F08A25FB /* CBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933E4725EB3C38F33A5F2B9 /* CBCode.m */; };
+		32DE56815ECA7B58C700BE29 /* util_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 03BBE23CBDAA85ECCACCB196 /* util_mosq.h */; };
+		435DA7990CA989C84617D9F7 /* read_handle_shared.c in Sources */ = {isa = PBXBuildFile; fileRef = 39874E9ECF7DEE5DB9DF8CBE /* read_handle_shared.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		448D1B98B1741072736B1DCB /* will_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = A2E27EFBBFE7DC0E3D101CA5 /* will_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		44B7CD4653F300E1C06050CA /* CBMessageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20571AA37DA3D36DD031951F /* CBMessageClient.m */; };
+		4D8EC4139D4F74AA3450066C /* time_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 36DF607441DD6A1E4A415126 /* time_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		59B0A1B2E3A0744B0F0675D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0AABA92CDB33826F7A8F248 /* Foundation.framework */; };
+		63F7B3AFC031C0FBFDD1444B /* mqtt3_protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EB97DA0EE5ADD161DE4679D2 /* mqtt3_protocol.h */; };
+		6AB1BE00735600A131627120 /* ClearBlade.m in Sources */ = {isa = PBXBuildFile; fileRef = B371D82B898E135BF09DCE2E /* ClearBlade.m */; };
+		6CF1EEC4526EC4C0FE9F40CB /* CBQueryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 88C43DAA862C88640CBA1B7B /* CBQueryResponse.h */; };
+		6DC12C141E8B8961BBD7160B /* ClearBlade.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DD4E23DAA7EB030237533 /* ClearBlade.h */; };
+		6E579767DA7CA53DFC692EA1 /* CBCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F98E2D485D53F8C5675212A /* CBCollection.h */; };
+		76FAD869BCB772BEB92BE87D /* tls_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = E005E08D125FC439E9EAEB7C /* tls_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		7A331B2671BF6D482609DB70 /* mosquitto.h in Headers */ = {isa = PBXBuildFile; fileRef = 60E030327EBBCC35348FD8D9 /* mosquitto.h */; };
+		852066DC420E8A3C718EE1F4 /* read_handle.c in Sources */ = {isa = PBXBuildFile; fileRef = F8F91E8BCE031D0A3C73D113 /* read_handle.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		86870A03B5CFD038174FE622 /* CBHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 754EAB840CA8C53E8335A990 /* CBHTTPRequest.m */; };
+		88F87837074B85309F036B21 /* mosquitto.c in Sources */ = {isa = PBXBuildFile; fileRef = DAA16D4824E26D744AD8DAEA /* mosquitto.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		8BF4F9D70F97372F15520D28 /* time_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 550912D94F06350F3D4FB2B6 /* time_mosq.h */; };
+		8F008155BA86A3E2973CBB13 /* net_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = D90BA577418B6710207619D8 /* net_mosq.h */; };
+		90F5D72BE8C41308137D7E29 /* CBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF504CFDEC78EA9260E5725 /* CBUser.m */; };
+		93DC8A98009CAF09C45A13B4 /* CBPush.h in Headers */ = {isa = PBXBuildFile; fileRef = 411E36DE6CEDC043D31C1FF3 /* CBPush.h */; };
+		982D71D8AB40CC3656BB3655 /* CBPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E50EB6B62806576B085D7FB /* CBPush.m */; };
+		9E3EAF285A016C4EAC6E9BDA /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FFDF395231317B215345E8 /* CBItem.m */; };
+		9EA1F6424EB2AE386CE17073 /* CBHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1A7E46AE7A2C2CF17C2BAF /* CBHTTPRequest.h */; };
+		9EB0D69B5D1765C39CC29365 /* send_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = BF930F7ED5CAC19EA5875786 /* send_mosq.h */; };
+		9F6113815FE4F6AC782C5315 /* net_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 172D832F09CD99B6E82F260B /* net_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		A4BBC37BF494E89FDE69D695 /* CBCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E5946393D57A2D1D674407 /* CBCollection.m */; };
+		A75A53DD69CEB424A319ADDC /* read_handle_client.c in Sources */ = {isa = PBXBuildFile; fileRef = BB4E41704374BA94710DE136 /* read_handle_client.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		ABA385551B75A4B2B77CC675 /* CBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD1B7D13324433A48CB336D /* CBMessage.m */; };
+		B0063ED10CC15E8126597940 /* CBHTTPRequestResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 596AE764DD21B71F6EDF07FB /* CBHTTPRequestResponse.m */; };
+		B5154A5BD22EAC0045D0464F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C7786A3FB126862EF4371D /* CoreGraphics.framework */; };
+		BBD2BE059093AF6494DF3A0A /* logging_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 28E27FF2C8536F02613CDFC3 /* logging_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		BF4E0C8367C0FB03C166713C /* CBHTTPRequestResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = EF4BA2E1BC3DA02697D78DC7 /* CBHTTPRequestResponse.h */; };
+		C77E4BC0BB9BF698C0956D9C /* messages_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 28CA678BE106C5741F5F659D /* messages_mosq.h */; };
+		C832E2CA07223639D1E04886 /* logging_mosq.h in Headers */ = {isa = PBXBuildFile; fileRef = 08732E9DAD6461D40A9B2D12 /* logging_mosq.h */; };
+		C99CD538771CDD34C0EA90EF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCFD3FF875D93C7D3B40472 /* MobileCoreServices.framework */; };
+		D040B40878C00C099A1CFCCB /* CBQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = D3678264C26428123B28003B /* CBQuery.h */; };
+		D702F5E029371539B74FC291 /* dummypthread.h in Headers */ = {isa = PBXBuildFile; fileRef = 31AE05E27A090226C46BB4DD /* dummypthread.h */; };
+		D952E6D11EAFF28C70AC5DCB /* send_client_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 865EA9EE939AF1918C97EEB4 /* send_client_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		E3E26F5C2B4EA53070DE11BD /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C6C112194F8A96845D8406 /* Pods-dummy.m */; };
+		E7F454EAB74B5EC6B44E89FA /* CBQueryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74AE5C000957B177753538 /* CBQueryResponse.m */; };
+		EBE850B4B8B1DFEFBA1BBEF4 /* memory_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 70600CEB618F0CE4017498AC /* memory_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		F226012804C35CA76722A703 /* util_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = 4681B726F98539057C43BDD7 /* util_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		F9987B052A49CD279D0D0FAF /* messages_mosq.c in Sources */ = {isa = PBXBuildFile; fileRef = A9B1508699146DA36A202DD6 /* messages_mosq.c */; settings = {COMPILER_FLAGS = "-DWITH_THREADING -fno-objc-arc -fno-objc-arc"; }; };
+		FAFEF8D9FA83A3684D6C367B /* CBQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C96C27644812C1BABC1BDD4 /* CBQuery.m */; };
+		FCF4D74F35B2E6B0A8B838EB /* read_handle.h in Headers */ = {isa = PBXBuildFile; fileRef = EF5FF9BF6625A788CFA9A1D0 /* read_handle.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6A21CA26D1638955F3F29EED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64F378F1E07FF9D8FE0E8A8D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85AF4A0C5288474369AC5020;
+			remoteInfo = "Pods-ClearBlade-iOS-API";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00C6C112194F8A96845D8406 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		03BBE23CBDAA85ECCACCB196 /* util_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = util_mosq.h; path = ClearBladeAPI/libmosquitto/util_mosq.h; sourceTree = "<group>"; };
+		05B37849AFA8CB430E543DB7 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		07FFDF395231317B215345E8 /* CBItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBItem.m; path = ClearBladeAPI/CBItem.m; sourceTree = "<group>"; };
+		08732E9DAD6461D40A9B2D12 /* logging_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = logging_mosq.h; path = ClearBladeAPI/libmosquitto/logging_mosq.h; sourceTree = "<group>"; };
+		0E74AE5C000957B177753538 /* CBQueryResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBQueryResponse.m; path = ClearBladeAPI/CBQueryResponse.m; sourceTree = "<group>"; };
+		1099A5BCB44703A57884F898 /* CBItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBItem.h; path = ClearBladeAPI/CBItem.h; sourceTree = "<group>"; };
+		172D832F09CD99B6E82F260B /* net_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = net_mosq.c; path = ClearBladeAPI/libmosquitto/net_mosq.c; sourceTree = "<group>"; };
+		1AF504CFDEC78EA9260E5725 /* CBUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBUser.m; path = ClearBladeAPI/CBUser.m; sourceTree = "<group>"; };
+		1C96C27644812C1BABC1BDD4 /* CBQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBQuery.m; path = ClearBladeAPI/CBQuery.m; sourceTree = "<group>"; };
+		20569F4B055F03F09744C7AA /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		20571AA37DA3D36DD031951F /* CBMessageClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBMessageClient.m; path = ClearBladeAPI/CBMessageClient.m; sourceTree = "<group>"; };
+		244EEF2CBC218A8ADFD5653C /* Pods-ClearBlade-iOS-API-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ClearBlade-iOS-API-Private.xcconfig"; sourceTree = "<group>"; };
+		28CA678BE106C5741F5F659D /* messages_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = messages_mosq.h; path = ClearBladeAPI/libmosquitto/messages_mosq.h; sourceTree = "<group>"; };
+		28E27FF2C8536F02613CDFC3 /* logging_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = logging_mosq.c; path = ClearBladeAPI/libmosquitto/logging_mosq.c; sourceTree = "<group>"; };
+		29E62F936FF58DEF89268FD8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		2C22FDEF35C1A70863CBC808 /* will_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = will_mosq.h; path = ClearBladeAPI/libmosquitto/will_mosq.h; sourceTree = "<group>"; };
+		2E50EB6B62806576B085D7FB /* CBPush.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBPush.m; path = ClearBladeAPI/CBPush.m; sourceTree = "<group>"; };
+		306D7820AEB3759048DD2689 /* thread_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = thread_mosq.c; path = ClearBladeAPI/libmosquitto/thread_mosq.c; sourceTree = "<group>"; };
+		31AE05E27A090226C46BB4DD /* dummypthread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dummypthread.h; path = ClearBladeAPI/libmosquitto/dummypthread.h; sourceTree = "<group>"; };
+		36DF607441DD6A1E4A415126 /* time_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = time_mosq.c; path = ClearBladeAPI/libmosquitto/time_mosq.c; sourceTree = "<group>"; };
+		39874E9ECF7DEE5DB9DF8CBE /* read_handle_shared.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = read_handle_shared.c; path = ClearBladeAPI/libmosquitto/read_handle_shared.c; sourceTree = "<group>"; };
+		411E36DE6CEDC043D31C1FF3 /* CBPush.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBPush.h; path = ClearBladeAPI/CBPush.h; sourceTree = "<group>"; };
+		417615D45F9661BFA26532C5 /* Pods-ClearBlade-iOS-API.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ClearBlade-iOS-API.xcconfig"; sourceTree = "<group>"; };
+		41DA99D13F3C942158BEA50A /* mosquitto_internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mosquitto_internal.h; path = ClearBladeAPI/libmosquitto/mosquitto_internal.h; sourceTree = "<group>"; };
+		4681B726F98539057C43BDD7 /* util_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = util_mosq.c; path = ClearBladeAPI/libmosquitto/util_mosq.c; sourceTree = "<group>"; };
+		4933E4725EB3C38F33A5F2B9 /* CBCode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBCode.m; path = ClearBladeAPI/CBCode.m; sourceTree = "<group>"; };
+		4A3F982A7FA7BA6BFBFFA753 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		4D0C9B2A7AF665FCA5B4EF50 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		4DEDAD3987B3A1120DF995B0 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		550912D94F06350F3D4FB2B6 /* time_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = time_mosq.h; path = ClearBladeAPI/libmosquitto/time_mosq.h; sourceTree = "<group>"; };
+		596AE764DD21B71F6EDF07FB /* CBHTTPRequestResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBHTTPRequestResponse.m; path = ClearBladeAPI/CBHTTPRequestResponse.m; sourceTree = "<group>"; };
+		5ADDB0BBA4BD903C2A612104 /* CBMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBMessage.h; path = ClearBladeAPI/CBMessage.h; sourceTree = "<group>"; };
+		5F98E2D485D53F8C5675212A /* CBCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBCollection.h; path = ClearBladeAPI/CBCollection.h; sourceTree = "<group>"; };
+		60E030327EBBCC35348FD8D9 /* mosquitto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mosquitto.h; path = ClearBladeAPI/libmosquitto/mosquitto.h; sourceTree = "<group>"; };
+		64E5946393D57A2D1D674407 /* CBCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBCollection.m; path = ClearBladeAPI/CBCollection.m; sourceTree = "<group>"; };
+		658B9F03651DB27FACF19D45 /* tls_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls_mosq.h; path = ClearBladeAPI/libmosquitto/tls_mosq.h; sourceTree = "<group>"; };
+		6AD1B7D13324433A48CB336D /* CBMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBMessage.m; path = ClearBladeAPI/CBMessage.m; sourceTree = "<group>"; };
+		70600CEB618F0CE4017498AC /* memory_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = memory_mosq.c; path = ClearBladeAPI/libmosquitto/memory_mosq.c; sourceTree = "<group>"; };
+		754EAB840CA8C53E8335A990 /* CBHTTPRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CBHTTPRequest.m; path = ClearBladeAPI/CBHTTPRequest.m; sourceTree = "<group>"; };
+		76C7786A3FB126862EF4371D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		7A1A7E46AE7A2C2CF17C2BAF /* CBHTTPRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBHTTPRequest.h; path = ClearBladeAPI/CBHTTPRequest.h; sourceTree = "<group>"; };
+		85127AD6C66FBAB67B1E7A21 /* CBMessageClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBMessageClient.h; path = ClearBladeAPI/CBMessageClient.h; sourceTree = "<group>"; };
+		8655B962B55DEBDECB56B8B3 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		865EA9EE939AF1918C97EEB4 /* send_client_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = send_client_mosq.c; path = ClearBladeAPI/libmosquitto/send_client_mosq.c; sourceTree = "<group>"; };
+		867C56DB37A5AEC92571F61C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		88C43DAA862C88640CBA1B7B /* CBQueryResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBQueryResponse.h; path = ClearBladeAPI/CBQueryResponse.h; sourceTree = "<group>"; };
+		9106C097A7A821F5BC75C2A5 /* CBUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBUser.h; path = ClearBladeAPI/CBUser.h; sourceTree = "<group>"; };
+		9403E027A74A0FA1800808EE /* memory_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = memory_mosq.h; path = ClearBladeAPI/libmosquitto/memory_mosq.h; sourceTree = "<group>"; };
+		A0AABA92CDB33826F7A8F248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A2E27EFBBFE7DC0E3D101CA5 /* will_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = will_mosq.c; path = ClearBladeAPI/libmosquitto/will_mosq.c; sourceTree = "<group>"; };
+		A9B1508699146DA36A202DD6 /* messages_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = messages_mosq.c; path = ClearBladeAPI/libmosquitto/messages_mosq.c; sourceTree = "<group>"; };
+		B371D82B898E135BF09DCE2E /* ClearBlade.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ClearBlade.m; path = ClearBladeAPI/ClearBlade.m; sourceTree = "<group>"; };
+		B998A11C8447EC40BBA484D2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB4E41704374BA94710DE136 /* read_handle_client.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = read_handle_client.c; path = ClearBladeAPI/libmosquitto/read_handle_client.c; sourceTree = "<group>"; };
+		BF930F7ED5CAC19EA5875786 /* send_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = send_mosq.h; path = ClearBladeAPI/libmosquitto/send_mosq.h; sourceTree = "<group>"; };
+		C0A2983FA913776067B04980 /* CBCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBCode.h; path = ClearBladeAPI/CBCode.h; sourceTree = "<group>"; };
+		CFCFD3FF875D93C7D3B40472 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		D03DD4E23DAA7EB030237533 /* ClearBlade.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ClearBlade.h; path = ClearBladeAPI/ClearBlade.h; sourceTree = "<group>"; };
+		D3678264C26428123B28003B /* CBQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBQuery.h; path = ClearBladeAPI/CBQuery.h; sourceTree = "<group>"; };
+		D90BA577418B6710207619D8 /* net_mosq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = net_mosq.h; path = ClearBladeAPI/libmosquitto/net_mosq.h; sourceTree = "<group>"; };
+		DAA16D4824E26D744AD8DAEA /* mosquitto.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mosquitto.c; path = ClearBladeAPI/libmosquitto/mosquitto.c; sourceTree = "<group>"; };
+		E005E08D125FC439E9EAEB7C /* tls_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = tls_mosq.c; path = ClearBladeAPI/libmosquitto/tls_mosq.c; sourceTree = "<group>"; };
+		E0EB986F965E6FEF7DB16E78 /* CBAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBAPI.h; path = ClearBladeAPI/CBAPI.h; sourceTree = "<group>"; };
+		E62C50E410A9CB8EB2FF879F /* libPods-ClearBlade-iOS-API.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ClearBlade-iOS-API.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB97DA0EE5ADD161DE4679D2 /* mqtt3_protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mqtt3_protocol.h; path = ClearBladeAPI/libmosquitto/mqtt3_protocol.h; sourceTree = "<group>"; };
+		EF4BA2E1BC3DA02697D78DC7 /* CBHTTPRequestResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CBHTTPRequestResponse.h; path = ClearBladeAPI/CBHTTPRequestResponse.h; sourceTree = "<group>"; };
+		EF5FF9BF6625A788CFA9A1D0 /* read_handle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = read_handle.h; path = ClearBladeAPI/libmosquitto/read_handle.h; sourceTree = "<group>"; };
+		F25E8113EA93DA310C3D8197 /* Pods-ClearBlade-iOS-API-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ClearBlade-iOS-API-dummy.m"; sourceTree = "<group>"; };
+		F39A1664D0F2DF6957F43C47 /* Pods-ClearBlade-iOS-API-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ClearBlade-iOS-API-prefix.pch"; sourceTree = "<group>"; };
+		F6ADF0A6D6DC25982166DA43 /* config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = config.h; path = ClearBladeAPI/libmosquitto/config.h; sourceTree = "<group>"; };
+		F8F91E8BCE031D0A3C73D113 /* read_handle.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = read_handle.c; path = ClearBladeAPI/libmosquitto/read_handle.c; sourceTree = "<group>"; };
+		F9743159681814DA4BD3150A /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		FACD58ABC795B033672F8652 /* send_mosq.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = send_mosq.c; path = ClearBladeAPI/libmosquitto/send_mosq.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E40ACA58691FE2FB74F9DBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5154A5BD22EAC0045D0464F /* CoreGraphics.framework in Frameworks */,
+				09F8EFD45E76BC2B7BEB6A34 /* Foundation.framework in Frameworks */,
+				C99CD538771CDD34C0EA90EF /* MobileCoreServices.framework in Frameworks */,
+				208B96A94DFA845A6B35C475 /* Security.framework in Frameworks */,
+				19ECD61A875FBF96AC916DDF /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAB9F989BF0C0AD6D663A9CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59B0A1B2E3A0744B0F0675D0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E97589C7E7B27533D68945D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05B37849AFA8CB430E543DB7 /* Pods-acknowledgements.markdown */,
+				20569F4B055F03F09744C7AA /* Pods-acknowledgements.plist */,
+				00C6C112194F8A96845D8406 /* Pods-dummy.m */,
+				F9743159681814DA4BD3150A /* Pods-environment.h */,
+				8655B962B55DEBDECB56B8B3 /* Pods-resources.sh */,
+				29E62F936FF58DEF89268FD8 /* Pods.debug.xcconfig */,
+				867C56DB37A5AEC92571F61C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		39DBF19D1053ECB996FCF1B9 = {
+			isa = PBXGroup;
+			children = (
+				4DEDAD3987B3A1120DF995B0 /* Podfile */,
+				F63C484C5DD5C4828FCB9512 /* Frameworks */,
+				9DF2FCEED180DCD11B723990 /* Pods */,
+				9A38AAAEED1528ED934F1223 /* Products */,
+				753EBE76AF2007B4F2D8A6CC /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		6948D73931AE66EC7E4225B0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				417615D45F9661BFA26532C5 /* Pods-ClearBlade-iOS-API.xcconfig */,
+				244EEF2CBC218A8ADFD5653C /* Pods-ClearBlade-iOS-API-Private.xcconfig */,
+				F25E8113EA93DA310C3D8197 /* Pods-ClearBlade-iOS-API-dummy.m */,
+				F39A1664D0F2DF6957F43C47 /* Pods-ClearBlade-iOS-API-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-ClearBlade-iOS-API";
+			sourceTree = "<group>";
+		};
+		753EBE76AF2007B4F2D8A6CC /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E97589C7E7B27533D68945D /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9A38AAAEED1528ED934F1223 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B998A11C8447EC40BBA484D2 /* libPods.a */,
+				E62C50E410A9CB8EB2FF879F /* libPods-ClearBlade-iOS-API.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DF2FCEED180DCD11B723990 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4C27E24CE3640BD9A6F38F1 /* ClearBlade-iOS-API */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A4C27E24CE3640BD9A6F38F1 /* ClearBlade-iOS-API */ = {
+			isa = PBXGroup;
+			children = (
+				E0EB986F965E6FEF7DB16E78 /* CBAPI.h */,
+				C0A2983FA913776067B04980 /* CBCode.h */,
+				4933E4725EB3C38F33A5F2B9 /* CBCode.m */,
+				5F98E2D485D53F8C5675212A /* CBCollection.h */,
+				64E5946393D57A2D1D674407 /* CBCollection.m */,
+				7A1A7E46AE7A2C2CF17C2BAF /* CBHTTPRequest.h */,
+				754EAB840CA8C53E8335A990 /* CBHTTPRequest.m */,
+				EF4BA2E1BC3DA02697D78DC7 /* CBHTTPRequestResponse.h */,
+				596AE764DD21B71F6EDF07FB /* CBHTTPRequestResponse.m */,
+				1099A5BCB44703A57884F898 /* CBItem.h */,
+				07FFDF395231317B215345E8 /* CBItem.m */,
+				5ADDB0BBA4BD903C2A612104 /* CBMessage.h */,
+				6AD1B7D13324433A48CB336D /* CBMessage.m */,
+				85127AD6C66FBAB67B1E7A21 /* CBMessageClient.h */,
+				20571AA37DA3D36DD031951F /* CBMessageClient.m */,
+				411E36DE6CEDC043D31C1FF3 /* CBPush.h */,
+				2E50EB6B62806576B085D7FB /* CBPush.m */,
+				D3678264C26428123B28003B /* CBQuery.h */,
+				1C96C27644812C1BABC1BDD4 /* CBQuery.m */,
+				88C43DAA862C88640CBA1B7B /* CBQueryResponse.h */,
+				0E74AE5C000957B177753538 /* CBQueryResponse.m */,
+				9106C097A7A821F5BC75C2A5 /* CBUser.h */,
+				1AF504CFDEC78EA9260E5725 /* CBUser.m */,
+				D03DD4E23DAA7EB030237533 /* ClearBlade.h */,
+				B371D82B898E135BF09DCE2E /* ClearBlade.m */,
+				6948D73931AE66EC7E4225B0 /* Support Files */,
+				DCC23187DE900821D99EC666 /* libmosquitto */,
+			);
+			path = "ClearBlade-iOS-API";
+			sourceTree = "<group>";
+		};
+		DCC23187DE900821D99EC666 /* libmosquitto */ = {
+			isa = PBXGroup;
+			children = (
+				F6ADF0A6D6DC25982166DA43 /* config.h */,
+				31AE05E27A090226C46BB4DD /* dummypthread.h */,
+				28E27FF2C8536F02613CDFC3 /* logging_mosq.c */,
+				08732E9DAD6461D40A9B2D12 /* logging_mosq.h */,
+				70600CEB618F0CE4017498AC /* memory_mosq.c */,
+				9403E027A74A0FA1800808EE /* memory_mosq.h */,
+				A9B1508699146DA36A202DD6 /* messages_mosq.c */,
+				28CA678BE106C5741F5F659D /* messages_mosq.h */,
+				DAA16D4824E26D744AD8DAEA /* mosquitto.c */,
+				60E030327EBBCC35348FD8D9 /* mosquitto.h */,
+				41DA99D13F3C942158BEA50A /* mosquitto_internal.h */,
+				EB97DA0EE5ADD161DE4679D2 /* mqtt3_protocol.h */,
+				172D832F09CD99B6E82F260B /* net_mosq.c */,
+				D90BA577418B6710207619D8 /* net_mosq.h */,
+				F8F91E8BCE031D0A3C73D113 /* read_handle.c */,
+				EF5FF9BF6625A788CFA9A1D0 /* read_handle.h */,
+				BB4E41704374BA94710DE136 /* read_handle_client.c */,
+				39874E9ECF7DEE5DB9DF8CBE /* read_handle_shared.c */,
+				865EA9EE939AF1918C97EEB4 /* send_client_mosq.c */,
+				FACD58ABC795B033672F8652 /* send_mosq.c */,
+				BF930F7ED5CAC19EA5875786 /* send_mosq.h */,
+				306D7820AEB3759048DD2689 /* thread_mosq.c */,
+				36DF607441DD6A1E4A415126 /* time_mosq.c */,
+				550912D94F06350F3D4FB2B6 /* time_mosq.h */,
+				E005E08D125FC439E9EAEB7C /* tls_mosq.c */,
+				658B9F03651DB27FACF19D45 /* tls_mosq.h */,
+				4681B726F98539057C43BDD7 /* util_mosq.c */,
+				03BBE23CBDAA85ECCACCB196 /* util_mosq.h */,
+				A2E27EFBBFE7DC0E3D101CA5 /* will_mosq.c */,
+				2C22FDEF35C1A70863CBC808 /* will_mosq.h */,
+			);
+			name = libmosquitto;
+			sourceTree = "<group>";
+		};
+		F3BB05EC746529EEB9DBBA21 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				76C7786A3FB126862EF4371D /* CoreGraphics.framework */,
+				A0AABA92CDB33826F7A8F248 /* Foundation.framework */,
+				CFCFD3FF875D93C7D3B40472 /* MobileCoreServices.framework */,
+				4A3F982A7FA7BA6BFBFFA753 /* Security.framework */,
+				4D0C9B2A7AF665FCA5B4EF50 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F63C484C5DD5C4828FCB9512 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3BB05EC746529EEB9DBBA21 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		45F118BA83E383DA8D21FF4D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EC4A325183AA2E6657AF575 /* CBAPI.h in Headers */,
+				315D472588A714D1A11341BC /* CBCode.h in Headers */,
+				6E579767DA7CA53DFC692EA1 /* CBCollection.h in Headers */,
+				9EA1F6424EB2AE386CE17073 /* CBHTTPRequest.h in Headers */,
+				BF4E0C8367C0FB03C166713C /* CBHTTPRequestResponse.h in Headers */,
+				19B8E6E8D3DEE4ACF45CBADA /* CBItem.h in Headers */,
+				09392CBA7A7B6EA4F0790F16 /* CBMessage.h in Headers */,
+				04623A872C1F6D545D125A47 /* CBMessageClient.h in Headers */,
+				93DC8A98009CAF09C45A13B4 /* CBPush.h in Headers */,
+				D040B40878C00C099A1CFCCB /* CBQuery.h in Headers */,
+				6CF1EEC4526EC4C0FE9F40CB /* CBQueryResponse.h in Headers */,
+				284F200B490B0028170AE0CB /* CBUser.h in Headers */,
+				6DC12C141E8B8961BBD7160B /* ClearBlade.h in Headers */,
+				01BC31FB66CA9BDC2A93EF57 /* config.h in Headers */,
+				D702F5E029371539B74FC291 /* dummypthread.h in Headers */,
+				C832E2CA07223639D1E04886 /* logging_mosq.h in Headers */,
+				2070253F2654CF329BAA3AF5 /* memory_mosq.h in Headers */,
+				C77E4BC0BB9BF698C0956D9C /* messages_mosq.h in Headers */,
+				7A331B2671BF6D482609DB70 /* mosquitto.h in Headers */,
+				01B7E2ECA75D024E9CA742B9 /* mosquitto_internal.h in Headers */,
+				63F7B3AFC031C0FBFDD1444B /* mqtt3_protocol.h in Headers */,
+				8F008155BA86A3E2973CBB13 /* net_mosq.h in Headers */,
+				FCF4D74F35B2E6B0A8B838EB /* read_handle.h in Headers */,
+				9EB0D69B5D1765C39CC29365 /* send_mosq.h in Headers */,
+				8BF4F9D70F97372F15520D28 /* time_mosq.h in Headers */,
+				0A6D853FB0415F1486ECB89B /* tls_mosq.h in Headers */,
+				32DE56815ECA7B58C700BE29 /* util_mosq.h in Headers */,
+				13768AB3073C34B02AEEA300 /* will_mosq.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		85AF4A0C5288474369AC5020 /* Pods-ClearBlade-iOS-API */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DC3120E74880B20FFF5AB81 /* Build configuration list for PBXNativeTarget "Pods-ClearBlade-iOS-API" */;
+			buildPhases = (
+				4F93A1F2CB972294053D34F4 /* Sources */,
+				1E40ACA58691FE2FB74F9DBF /* Frameworks */,
+				45F118BA83E383DA8D21FF4D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ClearBlade-iOS-API";
+			productName = "Pods-ClearBlade-iOS-API";
+			productReference = E62C50E410A9CB8EB2FF879F /* libPods-ClearBlade-iOS-API.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BD2A899ADDF86CEFB5E4890C /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F7F5A88B01CE95096F98B8B /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				A2B3A6196426E0DD75DF0879 /* Sources */,
+				DAB9F989BF0C0AD6D663A9CD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2B949FD519D13F34E7CCE2B /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = B998A11C8447EC40BBA484D2 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64F378F1E07FF9D8FE0E8A8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+			};
+			buildConfigurationList = D9CD51EB1CCCDD6F8C57FDCB /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 39DBF19D1053ECB996FCF1B9;
+			productRefGroup = 9A38AAAEED1528ED934F1223 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD2A899ADDF86CEFB5E4890C /* Pods */,
+				85AF4A0C5288474369AC5020 /* Pods-ClearBlade-iOS-API */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F93A1F2CB972294053D34F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				322B03254FA83C69F08A25FB /* CBCode.m in Sources */,
+				A4BBC37BF494E89FDE69D695 /* CBCollection.m in Sources */,
+				86870A03B5CFD038174FE622 /* CBHTTPRequest.m in Sources */,
+				B0063ED10CC15E8126597940 /* CBHTTPRequestResponse.m in Sources */,
+				9E3EAF285A016C4EAC6E9BDA /* CBItem.m in Sources */,
+				ABA385551B75A4B2B77CC675 /* CBMessage.m in Sources */,
+				44B7CD4653F300E1C06050CA /* CBMessageClient.m in Sources */,
+				982D71D8AB40CC3656BB3655 /* CBPush.m in Sources */,
+				FAFEF8D9FA83A3684D6C367B /* CBQuery.m in Sources */,
+				E7F454EAB74B5EC6B44E89FA /* CBQueryResponse.m in Sources */,
+				90F5D72BE8C41308137D7E29 /* CBUser.m in Sources */,
+				6AB1BE00735600A131627120 /* ClearBlade.m in Sources */,
+				0477545013FADC9671C02B71 /* Pods-ClearBlade-iOS-API-dummy.m in Sources */,
+				BBD2BE059093AF6494DF3A0A /* logging_mosq.c in Sources */,
+				EBE850B4B8B1DFEFBA1BBEF4 /* memory_mosq.c in Sources */,
+				F9987B052A49CD279D0D0FAF /* messages_mosq.c in Sources */,
+				88F87837074B85309F036B21 /* mosquitto.c in Sources */,
+				9F6113815FE4F6AC782C5315 /* net_mosq.c in Sources */,
+				852066DC420E8A3C718EE1F4 /* read_handle.c in Sources */,
+				A75A53DD69CEB424A319ADDC /* read_handle_client.c in Sources */,
+				435DA7990CA989C84617D9F7 /* read_handle_shared.c in Sources */,
+				D952E6D11EAFF28C70AC5DCB /* send_client_mosq.c in Sources */,
+				2AFE37B6EBEE6D0F515E68F4 /* send_mosq.c in Sources */,
+				106D7147C3AEEACBBE687689 /* thread_mosq.c in Sources */,
+				4D8EC4139D4F74AA3450066C /* time_mosq.c in Sources */,
+				76FAD869BCB772BEB92BE87D /* tls_mosq.c in Sources */,
+				F226012804C35CA76722A703 /* util_mosq.c in Sources */,
+				448D1B98B1741072736B1DCB /* will_mosq.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2B3A6196426E0DD75DF0879 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3E26F5C2B4EA53070DE11BD /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2B949FD519D13F34E7CCE2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ClearBlade-iOS-API";
+			target = 85AF4A0C5288474369AC5020 /* Pods-ClearBlade-iOS-API */;
+			targetProxy = 6A21CA26D1638955F3F29EED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		27194770FF065B3484586C98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2EBE1A7AB1B474891AE2F881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 244EEF2CBC218A8ADFD5653C /* Pods-ClearBlade-iOS-API-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-ClearBlade-iOS-API/Pods-ClearBlade-iOS-API-prefix.pch";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		790CD1788FDAB90E815DB08E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867C56DB37A5AEC92571F61C /* Pods.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		901AC3EC331142031A12999A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		92D2EBF5E4EB86CE0A60831A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29E62F936FF58DEF89268FD8 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C75DEB93893877620505424B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 244EEF2CBC218A8ADFD5653C /* Pods-ClearBlade-iOS-API-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-ClearBlade-iOS-API/Pods-ClearBlade-iOS-API-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F7F5A88B01CE95096F98B8B /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D2EBF5E4EB86CE0A60831A /* Debug */,
+				790CD1788FDAB90E815DB08E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DC3120E74880B20FFF5AB81 /* Build configuration list for PBXNativeTarget "Pods-ClearBlade-iOS-API" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C75DEB93893877620505424B /* Debug */,
+				2EBE1A7AB1B474891AE2F881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9CD51EB1CCCDD6F8C57FDCB /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				901AC3EC331142031A12999A /* Debug */,
+				27194770FF065B3484586C98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64F378F1E07FF9D8FE0E8A8D /* Project object */;
+}

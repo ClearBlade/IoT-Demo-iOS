@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E019B63D1A35DC29000C9A05 /* JSONUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E019B63C1A35DC29000C9A05 /* JSONUtils.m */; };
+		E03418071A309B4700F1FED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E03418061A309B4700F1FED5 /* main.m */; };
+		E034180A1A309B4700F1FED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E03418091A309B4700F1FED5 /* AppDelegate.m */; };
+		E034180D1A309B4700F1FED5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E034180C1A309B4700F1FED5 /* ViewController.m */; };
+		E03418101A309B4700F1FED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E034180E1A309B4700F1FED5 /* Main.storyboard */; };
+		E03418121A309B4700F1FED5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E03418111A309B4700F1FED5 /* Images.xcassets */; };
+		E03418151A309B4700F1FED5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E03418131A309B4700F1FED5 /* LaunchScreen.xib */; };
+		E03418211A309B4700F1FED5 /* ClearBlade_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E03418201A309B4700F1FED5 /* ClearBlade_DemoTests.m */; };
+		E034182C1A30AF6C00F1FED5 /* OneTouchControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = E034182B1A30AF6C00F1FED5 /* OneTouchControlView.m */; };
+		E0ABDD1D1A3340DD007F40AB /* ClearBladeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E0ABDD1C1A3340DD007F40AB /* ClearBladeWrapper.m */; };
+		E0CD498B1A31FCBA00BDE805 /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD498A1A31FCBA00BDE805 /* EmptySegue.m */; };
+		E0CD498E1A31FEE700BDE805 /* SingleHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD498D1A31FEE700BDE805 /* SingleHandViewController.m */; };
+		E0CD49911A32001900BDE805 /* DualTreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49901A32001900BDE805 /* DualTreadViewController.m */; };
+		E0CD49941A3200DC00BDE805 /* TurretCannonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49931A3200DC00BDE805 /* TurretCannonView.m */; };
+		E0CD49971A32037D00BDE805 /* SingleTreadView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49961A32037D00BDE805 /* SingleTreadView.m */; };
+		E0CD499A1A3205EB00BDE805 /* ControlTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49991A3205EB00BDE805 /* ControlTypeViewController.m */; };
+		E0CD499D1A3238E100BDE805 /* TouchProcessorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD499C1A3238E100BDE805 /* TouchProcessorView.m */; };
+		E0CD49A21A325AC900BDE805 /* ControlMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49A11A325AC900BDE805 /* ControlMessage.m */; };
+		E0D2BF591A391061007C919C /* Tank.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D2BF581A391061007C919C /* Tank.m */; };
+		E0D2BF5C1A3A21A9007C919C /* TankMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D2BF5B1A3A21A9007C919C /* TankMessages.m */; };
+		E3675AC01FD4CC7160C725DA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B73B80F5235DCF39FBB4E8A7 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E034181B1A309B4700F1FED5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E03417F91A309B4700F1FED5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E03418001A309B4700F1FED5;
+			remoteInfo = "ClearBlade Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8C68DF81CEEB16029991B85A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B73B80F5235DCF39FBB4E8A7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C61F8D19D0CB760D9E89C49B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E019B63B1A35DC29000C9A05 /* JSONUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONUtils.h; sourceTree = "<group>"; };
+		E019B63C1A35DC29000C9A05 /* JSONUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONUtils.m; sourceTree = "<group>"; };
+		E03418011A309B4700F1FED5 /* ClearBlade Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ClearBlade Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E03418051A309B4700F1FED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E03418061A309B4700F1FED5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E03418081A309B4700F1FED5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E03418091A309B4700F1FED5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E034180B1A309B4700F1FED5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E034180C1A309B4700F1FED5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E034180F1A309B4700F1FED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E03418111A309B4700F1FED5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E03418141A309B4700F1FED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E034181A1A309B4700F1FED5 /* ClearBlade DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ClearBlade DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E034181F1A309B4700F1FED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E03418201A309B4700F1FED5 /* ClearBlade_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClearBlade_DemoTests.m; sourceTree = "<group>"; };
+		E034182A1A30AF6C00F1FED5 /* OneTouchControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneTouchControlView.h; sourceTree = "<group>"; };
+		E034182B1A30AF6C00F1FED5 /* OneTouchControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneTouchControlView.m; sourceTree = "<group>"; };
+		E0ABDD1B1A3340DD007F40AB /* ClearBladeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearBladeWrapper.h; sourceTree = "<group>"; };
+		E0ABDD1C1A3340DD007F40AB /* ClearBladeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearBladeWrapper.m; sourceTree = "<group>"; };
+		E0CD49891A31FCBA00BDE805 /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
+		E0CD498A1A31FCBA00BDE805 /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
+		E0CD498C1A31FEE700BDE805 /* SingleHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHandViewController.h; sourceTree = "<group>"; };
+		E0CD498D1A31FEE700BDE805 /* SingleHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHandViewController.m; sourceTree = "<group>"; };
+		E0CD498F1A32001900BDE805 /* DualTreadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DualTreadViewController.h; sourceTree = "<group>"; };
+		E0CD49901A32001900BDE805 /* DualTreadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DualTreadViewController.m; sourceTree = "<group>"; };
+		E0CD49921A3200DC00BDE805 /* TurretCannonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurretCannonView.h; sourceTree = "<group>"; };
+		E0CD49931A3200DC00BDE805 /* TurretCannonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurretCannonView.m; sourceTree = "<group>"; };
+		E0CD49951A32037D00BDE805 /* SingleTreadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTreadView.h; sourceTree = "<group>"; };
+		E0CD49961A32037D00BDE805 /* SingleTreadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTreadView.m; sourceTree = "<group>"; };
+		E0CD49981A3205EB00BDE805 /* ControlTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlTypeViewController.h; sourceTree = "<group>"; };
+		E0CD49991A3205EB00BDE805 /* ControlTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlTypeViewController.m; sourceTree = "<group>"; };
+		E0CD499B1A3238E100BDE805 /* TouchProcessorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchProcessorView.h; sourceTree = "<group>"; };
+		E0CD499C1A3238E100BDE805 /* TouchProcessorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchProcessorView.m; sourceTree = "<group>"; };
+		E0CD49A01A325AC900BDE805 /* ControlMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlMessage.h; sourceTree = "<group>"; };
+		E0CD49A11A325AC900BDE805 /* ControlMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlMessage.m; sourceTree = "<group>"; };
+		E0D2BF571A391061007C919C /* Tank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tank.h; sourceTree = "<group>"; };
+		E0D2BF581A391061007C919C /* Tank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tank.m; sourceTree = "<group>"; };
+		E0D2BF5A1A3A21A9007C919C /* TankMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankMessages.h; sourceTree = "<group>"; };
+		E0D2BF5B1A3A21A9007C919C /* TankMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankMessages.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E03417FE1A309B4700F1FED5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3675AC01FD4CC7160C725DA /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E03418171A309B4700F1FED5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		368EA2B50D3C3140C896DF65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B73B80F5235DCF39FBB4E8A7 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F846E803341299091B77283 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C68DF81CEEB16029991B85A /* Pods.debug.xcconfig */,
+				C61F8D19D0CB760D9E89C49B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E03417F81A309B4700F1FED5 = {
+			isa = PBXGroup;
+			children = (
+				E03418031A309B4700F1FED5 /* ClearBlade Demo */,
+				E034181D1A309B4700F1FED5 /* ClearBlade DemoTests */,
+				E03418021A309B4700F1FED5 /* Products */,
+				3F846E803341299091B77283 /* Pods */,
+				368EA2B50D3C3140C896DF65 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E03418021A309B4700F1FED5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E03418011A309B4700F1FED5 /* ClearBlade Demo.app */,
+				E034181A1A309B4700F1FED5 /* ClearBlade DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E03418031A309B4700F1FED5 /* ClearBlade Demo */ = {
+			isa = PBXGroup;
+			children = (
+				E03418081A309B4700F1FED5 /* AppDelegate.h */,
+				E03418091A309B4700F1FED5 /* AppDelegate.m */,
+				E034180B1A309B4700F1FED5 /* ViewController.h */,
+				E034180C1A309B4700F1FED5 /* ViewController.m */,
+				E034180E1A309B4700F1FED5 /* Main.storyboard */,
+				E03418111A309B4700F1FED5 /* Images.xcassets */,
+				E03418131A309B4700F1FED5 /* LaunchScreen.xib */,
+				E03418041A309B4700F1FED5 /* Supporting Files */,
+				E034182A1A30AF6C00F1FED5 /* OneTouchControlView.h */,
+				E034182B1A30AF6C00F1FED5 /* OneTouchControlView.m */,
+				E0CD49891A31FCBA00BDE805 /* EmptySegue.h */,
+				E0CD498A1A31FCBA00BDE805 /* EmptySegue.m */,
+				E0CD498C1A31FEE700BDE805 /* SingleHandViewController.h */,
+				E0CD498D1A31FEE700BDE805 /* SingleHandViewController.m */,
+				E0CD498F1A32001900BDE805 /* DualTreadViewController.h */,
+				E0CD49901A32001900BDE805 /* DualTreadViewController.m */,
+				E0CD49921A3200DC00BDE805 /* TurretCannonView.h */,
+				E0CD49931A3200DC00BDE805 /* TurretCannonView.m */,
+				E0CD49951A32037D00BDE805 /* SingleTreadView.h */,
+				E0CD49961A32037D00BDE805 /* SingleTreadView.m */,
+				E0CD49981A3205EB00BDE805 /* ControlTypeViewController.h */,
+				E0CD49991A3205EB00BDE805 /* ControlTypeViewController.m */,
+				E0CD499B1A3238E100BDE805 /* TouchProcessorView.h */,
+				E0CD499C1A3238E100BDE805 /* TouchProcessorView.m */,
+				E0CD49A01A325AC900BDE805 /* ControlMessage.h */,
+				E0CD49A11A325AC900BDE805 /* ControlMessage.m */,
+				E0ABDD1B1A3340DD007F40AB /* ClearBladeWrapper.h */,
+				E0ABDD1C1A3340DD007F40AB /* ClearBladeWrapper.m */,
+				E019B63B1A35DC29000C9A05 /* JSONUtils.h */,
+				E019B63C1A35DC29000C9A05 /* JSONUtils.m */,
+				E0D2BF571A391061007C919C /* Tank.h */,
+				E0D2BF581A391061007C919C /* Tank.m */,
+				E0D2BF5A1A3A21A9007C919C /* TankMessages.h */,
+				E0D2BF5B1A3A21A9007C919C /* TankMessages.m */,
+			);
+			path = "ClearBlade Demo";
+			sourceTree = "<group>";
+		};
+		E03418041A309B4700F1FED5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E03418051A309B4700F1FED5 /* Info.plist */,
+				E03418061A309B4700F1FED5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E034181D1A309B4700F1FED5 /* ClearBlade DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E03418201A309B4700F1FED5 /* ClearBlade_DemoTests.m */,
+				E034181E1A309B4700F1FED5 /* Supporting Files */,
+			);
+			path = "ClearBlade DemoTests";
+			sourceTree = "<group>";
+		};
+		E034181E1A309B4700F1FED5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E034181F1A309B4700F1FED5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E03418001A309B4700F1FED5 /* ClearBlade Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E03418241A309B4700F1FED5 /* Build configuration list for PBXNativeTarget "ClearBlade Demo" */;
+			buildPhases = (
+				F20D24EBBEB98FE5B536CB60 /* Check Pods Manifest.lock */,
+				E03417FD1A309B4700F1FED5 /* Sources */,
+				E03417FE1A309B4700F1FED5 /* Frameworks */,
+				E03417FF1A309B4700F1FED5 /* Resources */,
+				915B4EC5BD0373A6177D5ED4 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ClearBlade Demo";
+			productName = "ClearBlade Demo";
+			productReference = E03418011A309B4700F1FED5 /* ClearBlade Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E03418191A309B4700F1FED5 /* ClearBlade DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E03418271A309B4700F1FED5 /* Build configuration list for PBXNativeTarget "ClearBlade DemoTests" */;
+			buildPhases = (
+				E03418161A309B4700F1FED5 /* Sources */,
+				E03418171A309B4700F1FED5 /* Frameworks */,
+				E03418181A309B4700F1FED5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E034181C1A309B4700F1FED5 /* PBXTargetDependency */,
+			);
+			name = "ClearBlade DemoTests";
+			productName = "ClearBlade DemoTests";
+			productReference = E034181A1A309B4700F1FED5 /* ClearBlade DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E03417F91A309B4700F1FED5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Manweiler Software";
+				TargetAttributes = {
+					E03418001A309B4700F1FED5 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = J8ASYMQ394;
+					};
+					E03418191A309B4700F1FED5 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = J8ASYMQ394;
+						TestTargetID = E03418001A309B4700F1FED5;
+					};
+				};
+			};
+			buildConfigurationList = E03417FC1A309B4700F1FED5 /* Build configuration list for PBXProject "ClearBlade Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E03417F81A309B4700F1FED5;
+			productRefGroup = E03418021A309B4700F1FED5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E03418001A309B4700F1FED5 /* ClearBlade Demo */,
+				E03418191A309B4700F1FED5 /* ClearBlade DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E03417FF1A309B4700F1FED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E03418101A309B4700F1FED5 /* Main.storyboard in Resources */,
+				E03418151A309B4700F1FED5 /* LaunchScreen.xib in Resources */,
+				E03418121A309B4700F1FED5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E03418181A309B4700F1FED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		915B4EC5BD0373A6177D5ED4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F20D24EBBEB98FE5B536CB60 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E03417FD1A309B4700F1FED5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0ABDD1D1A3340DD007F40AB /* ClearBladeWrapper.m in Sources */,
+				E034180D1A309B4700F1FED5 /* ViewController.m in Sources */,
+				E0CD498E1A31FEE700BDE805 /* SingleHandViewController.m in Sources */,
+				E0CD498B1A31FCBA00BDE805 /* EmptySegue.m in Sources */,
+				E0CD49941A3200DC00BDE805 /* TurretCannonView.m in Sources */,
+				E0D2BF591A391061007C919C /* Tank.m in Sources */,
+				E0CD499A1A3205EB00BDE805 /* ControlTypeViewController.m in Sources */,
+				E034182C1A30AF6C00F1FED5 /* OneTouchControlView.m in Sources */,
+				E0CD499D1A3238E100BDE805 /* TouchProcessorView.m in Sources */,
+				E034180A1A309B4700F1FED5 /* AppDelegate.m in Sources */,
+				E03418071A309B4700F1FED5 /* main.m in Sources */,
+				E0CD49A21A325AC900BDE805 /* ControlMessage.m in Sources */,
+				E019B63D1A35DC29000C9A05 /* JSONUtils.m in Sources */,
+				E0CD49911A32001900BDE805 /* DualTreadViewController.m in Sources */,
+				E0CD49971A32037D00BDE805 /* SingleTreadView.m in Sources */,
+				E0D2BF5C1A3A21A9007C919C /* TankMessages.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E03418161A309B4700F1FED5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E03418211A309B4700F1FED5 /* ClearBlade_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E034181C1A309B4700F1FED5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E03418001A309B4700F1FED5 /* ClearBlade Demo */;
+			targetProxy = E034181B1A309B4700F1FED5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E034180E1A309B4700F1FED5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E034180F1A309B4700F1FED5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E03418131A309B4700F1FED5 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E03418141A309B4700F1FED5 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E03418221A309B4700F1FED5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E03418231A309B4700F1FED5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E03418251A309B4700F1FED5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C68DF81CEEB16029991B85A /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "ClearBlade Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E03418261A309B4700F1FED5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C61F8D19D0CB760D9E89C49B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "ClearBlade Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E03418281A309B4700F1FED5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ClearBlade DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClearBlade Demo.app/ClearBlade Demo";
+			};
+			name = Debug;
+		};
+		E03418291A309B4700F1FED5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ClearBlade DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClearBlade Demo.app/ClearBlade Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E03417FC1A309B4700F1FED5 /* Build configuration list for PBXProject "ClearBlade Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E03418221A309B4700F1FED5 /* Debug */,
+				E03418231A309B4700F1FED5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E03418241A309B4700F1FED5 /* Build configuration list for PBXNativeTarget "ClearBlade Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E03418251A309B4700F1FED5 /* Debug */,
+				E03418261A309B4700F1FED5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E03418271A309B4700F1FED5 /* Build configuration list for PBXNativeTarget "ClearBlade DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E03418281A309B4700F1FED5 /* Debug */,
+				E03418291A309B4700F1FED5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E03417F91A309B4700F1FED5 /* Project object */;
+}

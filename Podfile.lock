@@ -1,0 +1,12 @@
+PODS:
+  - ClearBlade-iOS-API (1.15.0):
+    - ClearBlade-iOS-API/libmosquitto (= 1.15.0)
+  - ClearBlade-iOS-API/libmosquitto (1.15.0)
+
+DEPENDENCIES:
+  - Clearblade-iOS-API
+
+SPEC CHECKSUMS:
+  ClearBlade-iOS-API: 2d9be318222a85316e6bed5bccaea82b7d1c1ac7
+
+COCOAPODS: 0.35.0

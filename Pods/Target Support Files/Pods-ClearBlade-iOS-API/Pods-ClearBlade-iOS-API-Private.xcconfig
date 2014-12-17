@@ -1,0 +1,5 @@
+#include "Pods-ClearBlade-iOS-API.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/ClearBlade-iOS-API" "${PODS_ROOT}/Headers/Build/ClearBlade-iOS-API/libmosquitto" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/ClearBlade-iOS-API" "${PODS_ROOT}/Headers/Public/ClearBlade-iOS-API/libmosquitto"
+OTHER_LDFLAGS = ${PODS_CLEARBLADE_IOS_API_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
