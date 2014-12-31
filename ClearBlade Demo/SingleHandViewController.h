@@ -14,5 +14,7 @@
 
 @property (nonatomic, strong) IBOutlet TurretCannonView *turretCannonView;
 @property (nonatomic, strong) IBOutlet OneTouchControlView *oneTouchControlView;
+@property (nonatomic, strong) IBOutlet UITapGestureRecognizer *turretTapper;
+@property (nonatomic, strong) IBOutlet UITapGestureRecognizer *oneTouchTapper;
 
 @end

@@ -115,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="404"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5m-H0-5ZB" customClass="OneTouchControlView">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5m-H0-5ZB" customClass="OneTouchControlView">
                                 <rect key="frame" x="384" y="20" width="364" height="364"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgU-nB-gAG" userLabel="Horizontal Guide">
@@ -140,6 +140,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="364" id="LHd-uG-tnV"/>
                                     <constraint firstAttribute="width" constant="364" id="S2Y-eJ-Jms"/>
@@ -148,29 +149,38 @@
                                     <outlet property="horizontalGuide" destination="kgU-nB-gAG" id="cuy-xR-iRH"/>
                                     <outlet property="slider" destination="YSF-EE-dPi" id="29u-68-f69"/>
                                     <outlet property="verticalGuide" destination="EpX-J8-PiC" id="5py-1d-3hM"/>
+                                    <outletCollection property="gestureRecognizers" destination="FLy-iq-l2f" appends="YES" id="4m7-Nc-NlT"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-DC-eyC" customClass="TurretCannonView">
-                                <rect key="frame" x="20" y="20" width="364" height="364"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-DC-eyC" customClass="TurretCannonView">
+                                <rect key="frame" x="0.0" y="20" width="364" height="364"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Turret/Cannon Controls NYI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4O-ug-ohZ">
-                                        <rect key="frame" x="8" y="181" width="368" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="368" id="0YU-30-1MJ"/>
-                                            <constraint firstAttribute="height" constant="21" id="TXp-eS-z3r"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlV-qH-U5H" userLabel="Vertical Guide">
+                                        <rect key="frame" x="181" y="0.0" width="2" height="364"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzd-n9-hHB" userLabel="Horizontal Guide">
+                                        <rect key="frame" x="0.0" y="181" width="364" height="2"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rsf-pH-3RE" userLabel="Slider">
+                                        <rect key="frame" x="157" y="157" width="50" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="364" id="6OR-Nh-M9O"/>
                                     <constraint firstAttribute="width" constant="364" id="9JR-xr-Lgd"/>
-                                    <constraint firstAttribute="centerY" secondItem="A4O-ug-ohZ" secondAttribute="centerY" id="cwa-KX-8hr"/>
-                                    <constraint firstAttribute="centerX" secondItem="A4O-ug-ohZ" secondAttribute="centerX" id="dSe-qU-xjN"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="horizontalGuide" destination="lzd-n9-hHB" id="aez-Ne-D6n"/>
+                                    <outlet property="slider" destination="Rsf-pH-3RE" id="kc3-bC-2GL"/>
+                                    <outlet property="verticalGuide" destination="wlV-qH-U5H" id="3zx-cS-HUc"/>
+                                    <outletCollection property="gestureRecognizers" destination="LHJ-sl-CfZ" appends="YES" id="w6d-gb-eKK"/>
+                                    <outletCollection property="gestureRecognizers" destination="LHJ-sl-CfZ" appends="YES" id="GCE-IU-y5B"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,17 +188,29 @@
                             <constraint firstItem="Npf-DC-eyC" firstAttribute="leading" secondItem="BXr-zS-NOc" secondAttribute="leadingMargin" id="1QO-6K-LHI"/>
                             <constraint firstItem="S5m-H0-5ZB" firstAttribute="top" secondItem="BXr-zS-NOc" secondAttribute="topMargin" constant="20" id="EhW-WZ-YW3"/>
                             <constraint firstItem="Npf-DC-eyC" firstAttribute="top" secondItem="BXr-zS-NOc" secondAttribute="topMargin" constant="20" id="lbY-Hn-kgf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="S5m-H0-5ZB" secondAttribute="trailing" constant="4" id="pwY-Hk-Ire"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S5m-H0-5ZB" secondAttribute="trailing" id="pwY-Hk-Ire"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="404"/>
                     <connections>
                         <outlet property="oneTouchControlView" destination="S5m-H0-5ZB" id="yOz-mV-4B8"/>
+                        <outlet property="oneTouchTapper" destination="FLy-iq-l2f" id="FdC-DL-XS0"/>
                         <outlet property="turretCannonView" destination="Npf-DC-eyC" id="537-FY-exC"/>
+                        <outlet property="turretTapper" destination="LHJ-sl-CfZ" id="VVD-QM-6LI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gx-6Q-Ojf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="LHJ-sl-CfZ" userLabel="Turret Tapper">
+                    <connections>
+                        <action selector="handleTap:" destination="0gW-cz-c5D" id="Z9g-FR-QfX"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="FLy-iq-l2f" userLabel="One Touch Tapper">
+                    <connections>
+                        <action selector="handleTap:" destination="0gW-cz-c5D" id="vSd-Gd-go0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2505" y="510"/>
         </scene>
@@ -221,12 +243,14 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="Q8F-yW-UBN"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="horizontalGuide" destination="c8u-TP-Zmv" id="zIM-db-Xza"/>
                                     <outlet property="slider" destination="nl9-Xh-qZW" id="aLa-ep-7ru"/>
+                                    <outletCollection property="gestureRecognizers" destination="uQh-26-Hos" appends="YES" id="sWi-HW-0Ja"/>
                                 </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOR-93-rkc" userLabel="Left Tread View" customClass="SingleTreadView">
@@ -258,6 +282,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="GGL-hx-s75" secondAttribute="centerX" id="4OJ-bj-FmB"/>
                                     <constraint firstAttribute="centerY" secondItem="GGL-hx-s75" secondAttribute="centerY" id="Oar-dG-FEY"/>
@@ -266,37 +291,57 @@
                                 <connections>
                                     <outlet property="horizontalGuide" destination="soM-M0-LT6" id="c8x-Mx-GM6"/>
                                     <outlet property="slider" destination="6P2-SV-XH7" id="1me-r2-Yoz"/>
+                                    <outletCollection property="gestureRecognizers" destination="6da-Fi-szU" appends="YES" id="uQG-ze-0b8"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yni-Gm-Yx7" userLabel="Turret Cannon View" customClass="TurretCannonView">
-                                <rect key="frame" x="200" y="0.0" width="368" height="384"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yni-Gm-Yx7" userLabel="Turret Cannon View" customClass="TurretCannonView">
+                                <rect key="frame" x="202" y="0.0" width="364" height="384"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Turret/Cannon Controls -- NYI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-DC-9Gv">
-                                        <rect key="frame" x="8" y="181" width="352" height="21"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FP5-j5-3aB" userLabel="Vertical Guide">
+                                        <rect key="frame" x="182" y="0.0" width="2" height="384"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="352" id="19I-ge-dcc"/>
-                                            <constraint firstAttribute="height" constant="21" id="vrc-VC-QhM"/>
+                                            <constraint firstAttribute="height" constant="384" id="j7Y-91-RjV"/>
+                                            <constraint firstAttribute="width" constant="2" id="v4o-Mn-Nnb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4V-RG-xoL" userLabel="Horizontal Guide">
+                                        <rect key="frame" x="0.0" y="192" width="364" height="2"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="364" id="F6R-h3-7wQ"/>
+                                            <constraint firstAttribute="height" constant="2" id="hVE-Gh-ZgL"/>
+                                        </constraints>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mX8-jE-0GR" userLabel="Slider">
+                                        <rect key="frame" x="157" y="167" width="50" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2Uf-Ab-b5a"/>
+                                            <constraint firstAttribute="width" constant="50" id="WRM-jj-3HV"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="fsZ-DC-9Gv" secondAttribute="centerY" id="Fmo-CT-8Jw"/>
-                                    <constraint firstAttribute="centerX" secondItem="fsZ-DC-9Gv" secondAttribute="centerX" id="MqL-To-zNH"/>
+                                    <constraint firstAttribute="width" constant="364" id="p79-hv-v62"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="horizontalGuide" destination="W4V-RG-xoL" id="oBG-c1-OBe"/>
+                                    <outlet property="slider" destination="mX8-jE-0GR" id="sXD-Dn-dQi"/>
+                                    <outlet property="verticalGuide" destination="FP5-j5-3aB" id="iIm-Xd-fFP"/>
+                                    <outletCollection property="gestureRecognizers" destination="6uA-mP-UIh" appends="YES" id="3v9-rG-ru8"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yni-Gm-Yx7" firstAttribute="top" secondItem="9kI-VA-gJK" secondAttribute="topMargin" id="2Id-eJ-7bm"/>
+                            <constraint firstAttribute="centerX" secondItem="yni-Gm-Yx7" secondAttribute="centerX" id="4ZP-ph-Sbx"/>
                             <constraint firstItem="DbK-PE-dcY" firstAttribute="top" secondItem="9kI-VA-gJK" secondAttribute="topMargin" id="4rs-pz-CEy"/>
-                            <constraint firstItem="yni-Gm-Yx7" firstAttribute="leading" secondItem="bOR-93-rkc" secondAttribute="trailing" id="94U-sS-7O9"/>
-                            <constraint firstItem="yni-Gm-Yx7" firstAttribute="bottom" secondItem="9kI-VA-gJK" secondAttribute="bottomMargin" id="Gj1-kN-LbF"/>
+                            <constraint firstItem="yni-Gm-Yx7" firstAttribute="bottom" secondItem="9kI-VA-gJK" secondAttribute="bottomMargin" constant="-20" id="Gj1-kN-LbF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DbK-PE-dcY" secondAttribute="trailing" id="T3K-Z2-VoG"/>
-                            <constraint firstItem="DbK-PE-dcY" firstAttribute="leading" secondItem="yni-Gm-Yx7" secondAttribute="trailing" id="ai0-AQ-Wnu"/>
                             <constraint firstItem="bOR-93-rkc" firstAttribute="bottom" secondItem="9kI-VA-gJK" secondAttribute="bottomMargin" constant="-20" id="cnA-gB-VUJ"/>
                             <constraint firstItem="bOR-93-rkc" firstAttribute="top" secondItem="9kI-VA-gJK" secondAttribute="topMargin" id="g7e-f2-f00"/>
                             <constraint firstItem="DbK-PE-dcY" firstAttribute="bottom" secondItem="9kI-VA-gJK" secondAttribute="bottomMargin" constant="-20" id="g9d-9R-dfU"/>
@@ -312,6 +357,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKD-HR-KV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="6uA-mP-UIh" userLabel="Turret Tapper">
+                    <connections>
+                        <action selector="handleTap:" destination="mRF-bO-Bes" id="Epw-bo-pUy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="uQh-26-Hos" userLabel="Right Tapper">
+                    <connections>
+                        <action selector="handleTap:" destination="mRF-bO-Bes" id="e6h-Ph-H8H"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesBegan="YES" numberOfTapsRequired="2" id="6da-Fi-szU" userLabel="Left Tapper">
+                    <connections>
+                        <action selector="handleTap:" destination="mRF-bO-Bes" id="snl-Uw-HBb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2505" y="939"/>
         </scene>

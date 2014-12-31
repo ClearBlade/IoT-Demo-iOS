@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TouchProcessorView.h"
 
-@interface TurretCannonView : UIView
+@interface TurretCannonView : TouchProcessorView
+
+@property (nonatomic, weak) IBOutlet UIView *verticalGuide;
+@property (nonatomic, weak) IBOutlet UIView *horizontalGuide;
+@property (nonatomic, weak) IBOutlet UIView *slider;
+
+-(void)viewAppeared;
 
 @end

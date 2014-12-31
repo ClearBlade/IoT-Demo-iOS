@@ -50,3 +50,18 @@
            andDirection:(NSInteger)direction;
 
 @end
+
+@interface TurretMoveMessage: TankBaseMessage
+
+-(id)initWithController:(NSString *)controller
+              andTankId:(NSString *)tankId
+           andDirection:(NSString *)direction;
+
+@end
+
+@interface TurretFireMessage: TankBaseMessage
+
+-(id)initWithController:(NSString *)controller
+              andTankId:(NSString *)tankId;
+
+@end

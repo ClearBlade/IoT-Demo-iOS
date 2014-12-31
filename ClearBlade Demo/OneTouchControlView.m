@@ -33,7 +33,7 @@
     self.slider.layer.borderColor = [UIColor redColor].CGColor;
     self.slider.layer.cornerRadius = 25;
     self.layer.borderWidth = 4;
-    self.layer.cornerRadius = 5;
+    self.layer.cornerRadius = 25;
     self.layer.borderColor = [UIColor blackColor
                               ].CGColor;
 }

@@ -19,6 +19,7 @@
 @interface ReceivedMessage ()
 
 @property(nonatomic, strong) NSString *messageType;
+@property(nonatomic, strong) NSString *messageClass;
 @property(nonatomic, strong) NSString *messageTarget;
 @property(nonatomic, strong) NSDictionary *dict;
 
@@ -29,17 +30,19 @@
 -(id)initWithTopic:(NSString *)topic andBody:(NSString *)body {
     self = [super init];
     NSArray *components = [topic componentsSeparatedByString:@"/"];
+    self.messageClass = @"";
     self.messageType = components[components.count - 1];
     self.messageTarget = @"";
     if (components.count > 3) {
         self.messageTarget = components[components.count - 2];
+        self.messageClass = components[1];
     }
     self.dict = [JSONUtils strToObj:body];
     return self;
 }
 
 -(BOOL)messageIsA:(NSString *)msgBaseName {
-    return [self.messageType isEqualToString:msgBaseName];
+    return [self.messageType isEqualToString:msgBaseName] && [self.messageClass isEqualToString:@"Tank"];
 }
 
 -(id)component:(NSString *)key {
@@ -117,6 +120,31 @@
     self.dict[@"TankId"] = tankId;
     self.dict[@"Speed"] = [NSNumber numberWithInteger:speed];
     self.dict[@"Direction"] = [NSNumber numberWithInteger:direction];
+    
+    return self;
+}
+
+@end
+
+@implementation TurretMoveMessage
+
+-(id)initWithController:(NSString *)controller andTankId:(NSString *)tankId andDirection:(NSString *)direction {
+    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Tank/%@/TurretMove", tankId]];
+    self.dict[@"ControllerId"] = controller;
+    self.dict[@"TankId"] = tankId;
+    self.dict[@"Direction"] = direction;
+    
+    return self;
+}
+
+@end
+
+@implementation TurretFireMessage
+
+-(id)initWithController:(NSString *)controller andTankId:(NSString *)tankId {
+    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Tank/%@/TurretFire", tankId]];
+    self.dict[@"ControllerId"] = controller;
+    self.dict[@"TankId"] = tankId;
     
     return self;
 }

@@ -25,6 +25,7 @@
     self.lastLeftY = self.lastRightY = 0;
     self.controlMessage = [[ControlMessage alloc] init];
     [self.leftTreadView viewAppeared];
+    [self.turretCannonView viewAppeared];
     [self.rightTreadView viewAppeared];
 }
 
@@ -49,6 +50,10 @@
         self.lastRightY = eventY;
     }
     [self.controlMessage generateMessageFromDualInput:@"Motion" withLeft:self.lastLeftY withRight:self.lastRightY];
+}
+
+-(IBAction)handleTap:(UITapGestureRecognizer *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TurretFire" object:[NSDictionary dictionary]];
 }
 
 @end

@@ -28,13 +28,22 @@ NSString * const ControllerStatePub = @"Dev/Controller/%@/State";
 NSString * const TankAskPairPub = @"/Dev/Tank/%@/AskPair";
 NSString * const TankUnpairPub = @"/Dev/Tank/%@/Unpair";
 NSString * const TankDrivePub = @"/Dev/Tank/%@/Drive";
-NSString * const TankTurretPub = @"/Dev/Tank/%@/Turret";
+NSString * const TankTurretMovePub = @"/Dev/Tank/%@/TurretMove";
+NSString * const TankTurretFirePub = @"/Dev/Tank/%@/TurretFire";
 
 //
 //  ClearBlade messages that this app subscribes to
 //
 NSString * const TankStateSub = @"Dev/Tank/+/State";
 NSString * const TankPairSub = @"Dev/Tank/+/Pair";
+
+//
+//  Field Names in messages
+//
+NSString * const FieldControllerId = @"Controller";
+NSString * const FieldTankId = @"TankId";
+NSString * const FieldSpeed = @"Speed";
+NSString * const FieldDirection = @"Direction";
 
 @interface ClearBladeWrapper ()
 
@@ -57,7 +66,12 @@ NSString * const TankPairSub = @"Dev/Tank/+/Pair";
     self.controllerState = UP_STATE;
     self.tanks = [NSMutableDictionary dictionary];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendSpeedAndDirection:) name:@"SpeedAndDirection" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTurretFire:)
+                                                 name:@"TurretFire" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTurretMove:)
+                                                 name:@"TurretMove" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendSpeedAndDirection:)
+                                                 name:@"SpeedAndDirection" object:nil];
     NSError * error;
     [ClearBlade initSettingsSyncWithSystemKey:@"82f7a8c60ab6b3f49ec4eea1b59801"
                              withSystemSecret:@"82F7A8C60A88AD98BEDBBDE9BE43"
@@ -84,6 +98,24 @@ NSString * const TankPairSub = @"Dev/Tank/+/Pair";
                                                                  andDirection:msg.direction];
     
    	[self.messageClient publishMessage:[driveMsg body] toTopic:[driveMsg topic]];
+}
+
+-(void)sendTurretMove:(NSNotification *)notif {
+    NSLog(@"Sending TurretMove if paired");
+    if ([self.pairedTank isEqualToString:@""]) {
+        return;
+    }
+    NSDictionary *msg = (NSDictionary *)notif.object;
+    TurretMoveMessage *moveMsg = [[TurretMoveMessage alloc] initWithController:self.uid andTankId:self.pairedTank andDirection:msg[FieldDirection]];
+    [self.messageClient publishMessage:[moveMsg body] toTopic:[moveMsg topic]];
+}
+
+-(void)sendTurretFire:(NSNotification *)notif {
+    if ([self.pairedTank isEqualToString:@""]) {
+        return;
+    }
+    TurretFireMessage *fireMsg = [[TurretFireMessage alloc] initWithController:self.uid andTankId:self.pairedTank];
+    [self.messageClient publishMessage:[fireMsg body] toTopic:[fireMsg topic]];
 }
 
 -(NSString *)makeTankTopic:(NSString *)topicStr {

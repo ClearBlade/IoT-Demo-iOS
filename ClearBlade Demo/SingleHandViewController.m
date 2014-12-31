@@ -23,6 +23,8 @@
     self.oneTouchControlView.delegate = self;
     self.controlMessage = [[ControlMessage alloc] init];
     [self.oneTouchControlView viewAppeared];
+    [self.turretCannonView viewAppeared];
+    self.turretTapper.delaysTouchesBegan = YES;
 }
 
 -(void)touchEventOccurred:(NSString *)eventName withX:(NSInteger)eventX withY:(NSInteger)eventY {
@@ -30,6 +32,10 @@
         eventX = eventY = 0;
     }
     [self.controlMessage generateMessageFromSingleInput:eventName withSpeed:eventY withDirection:eventX];
+}
+
+-(IBAction)handleTap:(UITapGestureRecognizer *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TurretFire" object:[NSDictionary dictionary]];
 }
 
 @end
