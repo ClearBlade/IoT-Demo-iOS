@@ -22,28 +22,38 @@
     return self;
 }
 
--(void)sendMessageNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SpeedAndDirection" object:self];
++(void)generateMessageFromSingleInput:(NSString *)messageName withSpeed:(NSInteger)speed withDirection:(NSInteger)direction {
+    NSMutableDictionary *msg = [NSMutableDictionary dictionary];
+    msg[@"Name"] = messageName;
+    msg[@"Speed"] = [NSNumber numberWithInteger:speed];
+    msg[@"Direction"] = [NSNumber numberWithInteger:direction];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SpeedAndDirection" object:msg];
 }
+
++(void)generateMessageFromDualInput:(NSString *)messageName withLeft:(NSInteger)left withRight:(NSInteger)right {
+    NSMutableDictionary *msg = [NSMutableDictionary dictionary];
+    msg[@"Name"] = messageName;
+    NSInteger speed = (left + right) / 2;
+    NSInteger direction = ((speed >= 0) ? 1 : -1) * ((left - right) / 2);
+    NSLog(@"Left: %ld, Right: %ld, Speed: %ld, Direction %ld", left, right, speed, direction);
+    msg[@"Speed"] = [NSNumber numberWithInteger:speed];
+    msg[@"Direction"] = [NSNumber numberWithInteger:direction];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SpeedAndDirection" object:msg];
+}
+
++(void)generateFireMessage {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TurretFire" object:Nil];
+}
+
+/*
+-(void)generateMessageFromDualInput:(NSString *)messageName withLeft:(NSInteger)left withRight:(NSInteger)right {
+    [ControlMessage generateMessageFromDualInput:messageName withLeft:left withRight:right];
+}
+
 
 -(void)generateMessageFromSingleInput:(NSString *)messageName withSpeed:(NSInteger)speed withDirection:(NSInteger)direction {
-    self.name = messageName;
-    self.speed = speed;
-    self.direction = direction;
-    [self sendMessageNotification];
+    [ControlMessage generateMessageFromSingleInput:messageName withSpeed:speed withDirection:direction];
 }
-
--(void)generateMessageFromDualInput:(NSString *)messageName withLeft:(NSInteger)left withRight:(NSInteger)right {
-    self.name = messageName;
-    self.speed = (left + right) / 2;
-    self.direction = ((self.speed >= 0) ? 1 : -1) * ((left - right) / 2);
-    NSLog(@"Left: %ld, Right: %ld, Speed: %ld, Direction %ld", left, right, self.speed, self.direction);
-    [self sendMessageNotification];
-}
-
--(NSDictionary *)asDict {
-    return [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.speed], @"Speed",
-            [NSNumber numberWithInteger:self.direction], @"Direction", nil];
-}
+ */
 
 @end

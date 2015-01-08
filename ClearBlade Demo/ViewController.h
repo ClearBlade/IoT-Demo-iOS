@@ -16,6 +16,11 @@
 @property (nonatomic, strong) IBOutlet UIView *controlsContainerView;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *controlsSwitcher;
 @property (nonatomic, strong) IBOutlet ControlTypeViewController *controlTypeViewController;
+@property (nonatomic, strong) IBOutlet UILabel *myoGesture;
+@property (nonatomic, strong) IBOutlet UIView *singleFingerLabels;
+@property (nonatomic, strong) IBOutlet UIView *dualTreadLabels;
+
+-(IBAction)myoButtonPressed:(id)sender;
 
 @end
 

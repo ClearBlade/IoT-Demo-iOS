@@ -36,6 +36,7 @@ NSString * const TankTurretFirePub = @"/Dev/Tank/%@/TurretFire";
 //
 NSString * const TankStateSub = @"Dev/Tank/+/State";
 NSString * const TankPairSub = @"Dev/Tank/+/Pair";
+NSString * const TankSensorsSub = @"Dev/Tank/+/Sensors";
 
 //
 //  Field Names in messages
@@ -88,14 +89,15 @@ NSString * const FieldDirection = @"Direction";
 }
 
 -(void)sendSpeedAndDirection:(NSNotification *)notif {
+    NSLog(@"SendSpeedAndDirection if paired");
     if ([self.pairedTank isEqualToString:@""]) {
         return;
     }
-    ControlMessage *msg = (ControlMessage *)notif.object;
+    NSDictionary *msg = (NSDictionary *)notif.object;
     TankDriveMessage *driveMsg = [[TankDriveMessage alloc] initWithController:self.uid
                                                                     andTankId:self.pairedTank
-                                                                     andSpeed:msg.speed
-                                                                 andDirection:msg.direction];
+                                                                     andSpeed:[msg[@"Speed"] integerValue]
+                                                                 andDirection:[msg[@"Direction"] integerValue]];
     
    	[self.messageClient publishMessage:[driveMsg body] toTopic:[driveMsg topic]];
 }
@@ -111,6 +113,7 @@ NSString * const FieldDirection = @"Direction";
 }
 
 -(void)sendTurretFire:(NSNotification *)notif {
+    NSLog(@"SendTurretFire if paired");
     if ([self.pairedTank isEqualToString:@""]) {
         return;
     }
@@ -170,13 +173,17 @@ NSString * const FieldDirection = @"Direction";
     }
 }
 
+-(void)processTankSensorsMessage:(ReceivedMessage *)msg {
+}
+
 #pragma mark - ClearBlade Message Client Delegate Methods
 
 -(void)messageClientDidConnect:(CBMessageClient *)client {
     NSLog(@"messageClientDidConnect");
-    self.subscribeCount = 2;
+    self.subscribeCount = 3;
     [client subscribeToTopic:TankStateSub];
     [client subscribeToTopic:TankPairSub];
+    [client subscribeToTopic:TankSensorsSub];
 }
 
 -(void)messageClientDidDisconnect:(CBMessageClient *)client {
@@ -194,6 +201,8 @@ NSString * const FieldDirection = @"Direction";
         [self processTankStateMessage:msg];
     } else if ([msg messageIsA:@"Pair"]) {
         [self processTankPairMessage:msg];
+    } else if ([msg messageIsA:@"Sensors"]) {
+        [self processTankSensorsMessage:msg];
     }
 }
 

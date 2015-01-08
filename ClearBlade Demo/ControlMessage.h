@@ -15,9 +15,10 @@
 @property (nonatomic, assign) NSInteger speed;
 @property (nonatomic, assign) NSInteger direction;
 
--(void) generateMessageFromSingleInput:(NSString *)messageName withSpeed:(NSInteger)speed withDirection:(NSInteger)direction;
--(void)generateMessageFromDualInput:(NSString *)messageName withLeft:(NSInteger)left withRight:(NSInteger)right;
+//-(void) generateMessageFromSingleInput:(NSString *)messageName withSpeed:(NSInteger)speed withDirection:(NSInteger)direction;
+//-(void) generateMessageFromDualInput:(NSString *)messageName withLeft:(NSInteger)left withRight:(NSInteger)right;
++(void) generateMessageFromSingleInput:(NSString *)messageName withSpeed:(NSInteger)speed withDirection:(NSInteger)direction;
++(void) generateMessageFromDualInput:(NSString *)messageName withLeft:(NSInteger)left withRight:(NSInteger)right;
++(void) generateFireMessage;
 
-//  Convert object to vanilla dictionary to use (for example) for JSON serialization...
--(NSDictionary *)asDict;
 @end

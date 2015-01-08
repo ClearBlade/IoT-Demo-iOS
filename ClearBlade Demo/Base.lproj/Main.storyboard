@@ -20,33 +20,110 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-5w-WQU" userLabel="Top DashboardView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="620"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Dashboard -- Not Yet Implemented" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhi-JX-bAz">
-                                        <rect key="frame" x="0.0" y="309" width="768" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="A10-fc-Vqn"/>
-                                            <constraint firstAttribute="width" constant="768" id="Jbt-A9-Nlx"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fbu-Ea-KS3">
-                                        <rect key="frame" x="242" y="584" width="283" height="29"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fbu-Ea-KS3">
+                                        <rect key="frame" x="242" y="544" width="283" height="29"/>
                                         <segments>
                                             <segment title="Single Finger Control"/>
-                                            <segment title="Dual Thread Controls"/>
+                                            <segment title="Dual Tread Controls"/>
                                         </segments>
                                         <connections>
                                             <action selector="switchControlsValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="x5s-BO-d7g"/>
                                         </connections>
                                     </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Myo Pose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLA-lp-Xzc">
+                                        <rect key="frame" x="170" y="20" width="428" height="100"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wK5-RV-z53" userLabel="Single Finger Labals">
+                                        <rect key="frame" x="0.0" y="600" width="768" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turret Controls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0c-fz-hkL">
+                                                <rect key="frame" x="0.0" y="0.0" width="364" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Speed/Direction Controls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSW-z9-5Ln">
+                                                <rect key="frame" x="384" y="0.0" width="364" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="364" id="4aq-tc-tdv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="L6d-sU-lBg"/>
+                                            <constraint firstAttribute="trailing" secondItem="kSW-z9-5Ln" secondAttribute="trailing" id="PkH-aQ-aHv"/>
+                                            <constraint firstAttribute="bottom" secondItem="kSW-z9-5Ln" secondAttribute="bottom" id="ZST-4Q-9oH"/>
+                                            <constraint firstItem="kSW-z9-5Ln" firstAttribute="top" secondItem="wK5-RV-z53" secondAttribute="top" id="bI5-zo-54P"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lrn-yE-iKr" userLabel="DualTreadLabels">
+                                        <rect key="frame" x="0.0" y="600" width="768" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Tread" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvy-Hw-PNZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="C5l-65-r5M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RIght Tread" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTa-vv-krv">
+                                                <rect key="frame" x="588" y="0.0" width="180" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="DAa-fa-69x"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Turret Controls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuM-qe-PfR">
+                                                <rect key="frame" x="200" y="0.0" width="368" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="nuM-qe-PfR" firstAttribute="top" secondItem="Lrn-yE-iKr" secondAttribute="top" id="9Xc-lw-gfX"/>
+                                            <constraint firstAttribute="bottom" secondItem="RTa-vv-krv" secondAttribute="bottom" id="UPz-Zk-cI0"/>
+                                            <constraint firstAttribute="height" constant="20" id="VSK-2U-Wf8"/>
+                                            <constraint firstAttribute="bottom" secondItem="nuM-qe-PfR" secondAttribute="bottom" id="Xm3-uo-ydq"/>
+                                            <constraint firstAttribute="bottom" secondItem="qvy-Hw-PNZ" secondAttribute="bottom" id="Z3L-Ca-OjA"/>
+                                            <constraint firstItem="qvy-Hw-PNZ" firstAttribute="leading" secondItem="Lrn-yE-iKr" secondAttribute="leading" id="i4Q-Pl-6by"/>
+                                            <constraint firstItem="qvy-Hw-PNZ" firstAttribute="top" secondItem="Lrn-yE-iKr" secondAttribute="top" id="nKf-eO-qi0"/>
+                                            <constraint firstItem="RTa-vv-krv" firstAttribute="leading" secondItem="nuM-qe-PfR" secondAttribute="trailing" id="v9q-IU-oPD"/>
+                                            <constraint firstItem="nuM-qe-PfR" firstAttribute="leading" secondItem="qvy-Hw-PNZ" secondAttribute="trailing" id="vZd-Oa-zAZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="RTa-vv-krv" secondAttribute="trailing" id="yRs-9n-waS"/>
+                                            <constraint firstItem="RTa-vv-krv" firstAttribute="top" secondItem="Lrn-yE-iKr" secondAttribute="top" id="zBQ-JI-crv"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4I-1A-Fxe">
+                                        <rect key="frame" x="654" y="55" width="106" height="30"/>
+                                        <state key="normal" title="Attach Myo">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="Fbu-Ea-KS3" secondAttribute="centerX" id="ADc-KE-MYq"/>
-                                    <constraint firstAttribute="centerX" secondItem="Qhi-JX-bAz" secondAttribute="centerX" id="h4v-rl-MDL"/>
-                                    <constraint firstAttribute="bottom" secondItem="Fbu-Ea-KS3" secondAttribute="bottom" constant="8" id="nQM-S9-TiB"/>
-                                    <constraint firstAttribute="centerY" secondItem="Qhi-JX-bAz" secondAttribute="centerY" id="z6s-QP-qvL"/>
+                                    <constraint firstAttribute="trailing" secondItem="wK5-RV-z53" secondAttribute="trailing" id="Crh-LL-I12"/>
+                                    <constraint firstItem="wK5-RV-z53" firstAttribute="leading" secondItem="I2W-5w-WQU" secondAttribute="leading" id="TyR-XQ-CV2"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lrn-yE-iKr" secondAttribute="bottom" id="WLU-34-Lla"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lrn-yE-iKr" secondAttribute="trailing" id="izu-MR-waa"/>
+                                    <constraint firstItem="Lrn-yE-iKr" firstAttribute="leading" secondItem="I2W-5w-WQU" secondAttribute="leading" id="kgq-sg-kMM"/>
+                                    <constraint firstAttribute="centerX" secondItem="YLA-lp-Xzc" secondAttribute="centerX" id="mJL-iN-bbZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fbu-Ea-KS3" secondAttribute="bottom" constant="58" id="nQM-S9-TiB"/>
+                                    <constraint firstAttribute="bottom" secondItem="wK5-RV-z53" secondAttribute="bottom" id="qhS-ek-34M"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CN8-TG-lso" userLabel="Controls View">
@@ -73,12 +150,15 @@
                     <connections>
                         <outlet property="controlsContainerView" destination="CN8-TG-lso" id="xgp-Zn-rMd"/>
                         <outlet property="controlsSwitcher" destination="Fbu-Ea-KS3" id="Thq-2D-I4A"/>
+                        <outlet property="dualTreadLabels" destination="Lrn-yE-iKr" id="CmF-5q-0Nq"/>
+                        <outlet property="myoGesture" destination="YLA-lp-Xzc" id="csW-iW-y5F"/>
+                        <outlet property="singleFingerLabels" destination="wK5-RV-z53" id="aV6-oa-reN"/>
                         <outlet property="topDashboardView" destination="I2W-5w-WQU" id="zG0-wA-gEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="653"/>
+            <point key="canvasLocation" x="556" y="653"/>
         </scene>
         <!--Control Type View Controller-->
         <scene sceneID="Yby-S9-PAF">
@@ -373,7 +453,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2505" y="939"/>
+            <point key="canvasLocation" x="2505" y="987"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

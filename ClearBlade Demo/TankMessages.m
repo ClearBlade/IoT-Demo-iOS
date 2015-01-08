@@ -50,6 +50,10 @@
     return self.dict[key];
 }
 
+-(void)dump {
+    NSLog(@"RECEIVED MESSAGE: %@", self.dict);
+}
+
 -(NSString *)target {
     return self.messageTarget;
 }

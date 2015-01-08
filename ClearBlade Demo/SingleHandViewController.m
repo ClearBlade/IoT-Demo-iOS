@@ -11,7 +11,6 @@
 
 @interface SingleHandViewController ()
 
-@property (nonatomic, strong) ControlMessage *controlMessage;
 
 @end
 
@@ -19,9 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.oneTouchControlView.delegate = self;
-    self.controlMessage = [[ControlMessage alloc] init];
     [self.oneTouchControlView viewAppeared];
     [self.turretCannonView viewAppeared];
     self.turretTapper.delaysTouchesBegan = YES;
@@ -31,7 +28,7 @@
     if ([eventName isEqualToString:@"ENDED"] || [eventName isEqualToString:@"CANCELLED"]) {
         eventX = eventY = 0;
     }
-    [self.controlMessage generateMessageFromSingleInput:eventName withSpeed:eventY withDirection:eventX];
+    [ControlMessage generateMessageFromSingleInput:eventName withSpeed:eventY withDirection:eventX];
 }
 
 -(IBAction)handleTap:(UITapGestureRecognizer *)sender {

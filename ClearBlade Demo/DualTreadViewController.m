@@ -12,7 +12,6 @@
 @interface DualTreadViewController ()
 
 @property (nonatomic, assign) NSInteger lastLeftY, lastRightY;
-@property (nonatomic, strong) ControlMessage *controlMessage;
 
 @end
 
@@ -23,7 +22,6 @@
     self.leftTreadView.delegate = self;
     self.rightTreadView.delegate = self;
     self.lastLeftY = self.lastRightY = 0;
-    self.controlMessage = [[ControlMessage alloc] init];
     [self.leftTreadView viewAppeared];
     [self.turretCannonView viewAppeared];
     [self.rightTreadView viewAppeared];
@@ -49,7 +47,7 @@
     } else {
         self.lastRightY = eventY;
     }
-    [self.controlMessage generateMessageFromDualInput:@"Motion" withLeft:self.lastLeftY withRight:self.lastRightY];
+    [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:self.lastLeftY withRight:self.lastRightY];
 }
 
 -(IBAction)handleTap:(UITapGestureRecognizer *)sender {
