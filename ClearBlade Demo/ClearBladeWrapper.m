@@ -60,6 +60,7 @@ NSString * const FieldDirection = @"Direction";
 @implementation ClearBladeWrapper
 
 -(id) init {
+    NSLog(@"ClearBladeWrapper init");
     self = [super init];
     self.uid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     self.pairedTank = @"";
@@ -73,7 +74,11 @@ NSString * const FieldDirection = @"Direction";
                                                  name:@"TurretMove" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendSpeedAndDirection:)
                                                  name:@"SpeedAndDirection" object:nil];
-    NSError * error;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive:) name:@"WillResignActive" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive:) name:@"DidBecomeActive" object:nil];
+    //[self initClearBlade];
+    /*
+    NSError *error;
     [ClearBlade initSettingsSyncWithSystemKey:@"82f7a8c60ab6b3f49ec4eea1b59801"
                              withSystemSecret:@"82F7A8C60A88AD98BEDBBDE9BE43"
                                   withOptions:@{}
@@ -85,7 +90,44 @@ NSString * const FieldDirection = @"Direction";
     self.messageClient = [[CBMessageClient alloc] init];
     self.messageClient.delegate = self;
     [self.messageClient connect];
+     */
     return self;
+}
+
+-(void)didBecomeActive:(id)sender {
+    [self initClearBlade];
+}
+
+-(void)willResignActive:(id)sender {
+    [self shutdownClearBlade];
+}
+
+-(void)initClearBlade {
+    [self sendStateChanged:@"Connecting"];
+    self.pairedTank = @"";
+    self.subscribeCount = 0;
+    self.controllerState = UP_STATE;
+    NSError *error;
+    [ClearBlade initSettingsSyncWithSystemKey:@"82f7a8c60ab6b3f49ec4eea1b59801"
+                             withSystemSecret:@"82F7A8C60A88AD98BEDBBDE9BE43"
+                                  withOptions:@{}
+                                    withError:&error];
+    if (error) {
+        NSLog(@"Failed to connect with error %@", error);
+        return;
+    }
+    self.messageClient = [[CBMessageClient alloc] init];
+    self.messageClient.delegate = self;
+    [self.messageClient connect];
+}
+
+-(void)shutdownClearBlade {
+    self.controllerState = @"Down";
+    ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
+    [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
+    
+    [self.messageClient disconnect];
+    [self sendStateChanged:@"Disconnected"];
 }
 
 -(void)sendSpeedAndDirection:(NSNotification *)notif {
@@ -136,6 +178,7 @@ NSString * const FieldDirection = @"Direction";
     if ([self.controllerState isEqualToString:@"Up"] &&
         [tankState isEqualToString:@"Up"]) {
         // Try to pair
+        [self sendStateChanged:@"Pairing With Tank"];
         self.controllerState = @"Pairing";
         self.pairedTank = tankId;
         TankAskPairMessage *msg = [[TankAskPairMessage alloc] initWithController:self.uid
@@ -143,6 +186,7 @@ NSString * const FieldDirection = @"Direction";
        	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
     } else if ([tankId isEqualToString:self.pairedTank] && ![tankState isEqualToString:@"Paired"]) {
         // Tank crashed or something -- unpair
+        [self sendStateChanged:@"Finding A Tank"];
         self.controllerState = @"Up";
         self.pairedTank = @"";
         // XXXSWM Send Dev/Controller/<me>/State msg
@@ -162,10 +206,14 @@ NSString * const FieldDirection = @"Direction";
         return;
     }
     if ([pairResponse isEqualToString:@"Yes"]) {
+        [self sendStateChanged:@"Paired With Tank"];
         self.controllerState = @"Paired";
         self.pairedTank = tankId;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TankPaired" object:nil];
+        
     } else {
         //  Pairing failed. Start the discovery process all over again...
+        [self sendStateChanged:@"Finding A Tank"];
         self.controllerState = @"Up";
         self.pairedTank = @"";
         TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
@@ -174,11 +222,17 @@ NSString * const FieldDirection = @"Direction";
 }
 
 -(void)processTankSensorsMessage:(ReceivedMessage *)msg {
+    
+}
+
+-(void)sendStateChanged:(NSString *)newState {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StateChanged" object:[NSDictionary dictionaryWithObject:newState forKey:@"State"]];
 }
 
 #pragma mark - ClearBlade Message Client Delegate Methods
 
 -(void)messageClientDidConnect:(CBMessageClient *)client {
+    [self sendStateChanged:@"Connected"];
     NSLog(@"messageClientDidConnect");
     self.subscribeCount = 3;
     [client subscribeToTopic:TankStateSub];
@@ -209,6 +263,7 @@ NSString * const FieldDirection = @"Direction";
 -(void)messageClient:(CBMessageClient *)client didSubscribe:(NSString *)topic {
     NSLog(@"didSubscribe");
     if (-- self.subscribeCount <= 0) {
+        [self sendStateChanged:@"Finding A Tank"];
         TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
        	[client publishMessage:[msg body] toTopic:[msg topic]];
     }

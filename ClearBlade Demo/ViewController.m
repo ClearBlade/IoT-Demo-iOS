@@ -27,6 +27,7 @@
     [super viewDidLoad];
     self.myo = [[MyoWrapper alloc] init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(poseChanged:) name:@"MyoPoseChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stateChanged:) name:@"StateChanged" object:nil];
     self.controlsSwitcher.tintColor = [UIColor darkGrayColor];
     NSDictionary *attrs = @{NSFontAttributeName: [UIFont systemFontOfSize:20.0f]};
     [self.controlsSwitcher setTitleTextAttributes:attrs forState:UIControlStateNormal];
@@ -73,6 +74,11 @@
 -(void)poseChanged:(NSNotification *)notif {
     NSDictionary *msg = (NSDictionary *)notif.object;
     self.myoGesture.text = msg[@"Pose"];
+}
+
+-(void)stateChanged:(NSNotification *)notif {
+    NSDictionary *msg = (NSDictionary *)notif.object;
+    self.myoGesture.text = msg[@"State"];
 }
 
 -(void) setupControlsSwitcher {

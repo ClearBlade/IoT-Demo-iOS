@@ -89,9 +89,11 @@ static bool attached = false;
 }
 
 -(void)connectWithRect:(CGRect)rect inView:(UIView *)view {
+    /* SWM FOR NOW DON'T DO THIS
     self.popover = [TLMSettingsViewController settingsInPopoverController];
     [self.popover presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     NSLog(@"Popover should be displayed");
+     */
 }
 
 -(void)didConnectDevice:(NSNotification *)notif {
