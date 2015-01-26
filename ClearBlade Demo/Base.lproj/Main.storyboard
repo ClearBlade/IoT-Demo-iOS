@@ -17,6 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CN8-TG-lso" userLabel="Controls View">
+                                <rect key="frame" x="0.0" y="620" width="768" height="404"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="404" id="fmZ-NA-HQr"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="bLr-iF-Fdd" kind="embed" identifier="embedControlsContainer" id="11o-VB-0VF"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-5w-WQU" userLabel="Top DashboardView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="620"/>
                                 <subviews>
@@ -31,7 +40,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Connecting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLA-lp-Xzc">
-                                        <rect key="frame" x="170" y="20" width="428" height="100"/>
+                                        <rect key="frame" x="170" y="20" width="428" height="66"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -75,7 +84,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RIght Tread" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTa-vv-krv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Right Tread" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTa-vv-krv">
                                                 <rect key="frame" x="588" y="0.0" width="180" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="DAa-fa-69x"/>
@@ -106,9 +115,17 @@
                                             <constraint firstItem="RTa-vv-krv" firstAttribute="top" secondItem="Lrn-yE-iKr" secondAttribute="top" id="zBQ-JI-crv"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cblogo_blades_transp.png" translatesAutoresizingMaskIntoConstraints="NO" id="b0F-R1-NvC">
+                                        <rect key="frame" x="309" y="128" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="TIp-f7-040"/>
+                                            <constraint firstAttribute="width" constant="150" id="hK8-mh-2KG"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="b0F-R1-NvC" firstAttribute="top" secondItem="I2W-5w-WQU" secondAttribute="top" constant="100" id="2k1-sN-dc8"/>
                                     <constraint firstAttribute="centerX" secondItem="Fbu-Ea-KS3" secondAttribute="centerX" id="ADc-KE-MYq"/>
                                     <constraint firstAttribute="trailing" secondItem="wK5-RV-z53" secondAttribute="trailing" id="Crh-LL-I12"/>
                                     <constraint firstItem="wK5-RV-z53" firstAttribute="leading" secondItem="I2W-5w-WQU" secondAttribute="leading" id="TyR-XQ-CV2"/>
@@ -117,18 +134,10 @@
                                     <constraint firstItem="Lrn-yE-iKr" firstAttribute="leading" secondItem="I2W-5w-WQU" secondAttribute="leading" id="kgq-sg-kMM"/>
                                     <constraint firstAttribute="centerX" secondItem="YLA-lp-Xzc" secondAttribute="centerX" id="mJL-iN-bbZ"/>
                                     <constraint firstAttribute="bottom" secondItem="Fbu-Ea-KS3" secondAttribute="bottom" constant="58" id="nQM-S9-TiB"/>
+                                    <constraint firstAttribute="centerX" secondItem="b0F-R1-NvC" secondAttribute="centerX" id="piA-KN-pnO"/>
                                     <constraint firstAttribute="bottom" secondItem="wK5-RV-z53" secondAttribute="bottom" id="qhS-ek-34M"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CN8-TG-lso" userLabel="Controls View">
-                                <rect key="frame" x="0.0" y="620" width="768" height="404"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="404" id="fmZ-NA-HQr"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="bLr-iF-Fdd" kind="embed" identifier="embedControlsContainer" id="11o-VB-0VF"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -450,6 +459,9 @@
             <point key="canvasLocation" x="2505" y="987"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cblogo_blades_transp.png" width="600" height="559"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

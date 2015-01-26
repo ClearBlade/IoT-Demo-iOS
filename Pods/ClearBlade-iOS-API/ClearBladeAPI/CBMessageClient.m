@@ -308,7 +308,7 @@ static void CBMessageClient_onPublish(struct mosquitto * mosq, void *voidClient,
     });
 }
 -(void)handleMessage:(CBMessage *)message {
-    CBLogDebug(@"Mosquitto client received %@", message);
+    NSLog(@"Mosquitto client received %@", message);
     id<CBMessageClientDelegate> delegate = self.delegate;
     if ([delegate respondsToSelector:@selector(messageClient:didReceiveMessage:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{

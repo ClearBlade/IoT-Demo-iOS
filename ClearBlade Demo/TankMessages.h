@@ -66,3 +66,9 @@
               andTankId:(NSString *)tankId;
 
 @end
+
+@interface HeartbeatMessage : TankBaseMessage
+
+-(id)initWithController:(NSString *)controller;
+
+@end

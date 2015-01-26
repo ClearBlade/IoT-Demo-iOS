@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E00559B81A72C87100DA3634 /* cblogo_blades_transp.png in Resources */ = {isa = PBXBuildFile; fileRef = E00559B71A72C87100DA3634 /* cblogo_blades_transp.png */; };
 		E019B63D1A35DC29000C9A05 /* JSONUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E019B63C1A35DC29000C9A05 /* JSONUtils.m */; };
 		E03418071A309B4700F1FED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E03418061A309B4700F1FED5 /* main.m */; };
 		E034180A1A309B4700F1FED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E03418091A309B4700F1FED5 /* AppDelegate.m */; };
@@ -48,6 +49,7 @@
 		8C68DF81CEEB16029991B85A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B73B80F5235DCF39FBB4E8A7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61F8D19D0CB760D9E89C49B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E00559B71A72C87100DA3634 /* cblogo_blades_transp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cblogo_blades_transp.png; path = ../../Desktop/cblogo_blades_transp.png; sourceTree = "<group>"; };
 		E019B63B1A35DC29000C9A05 /* JSONUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONUtils.h; sourceTree = "<group>"; };
 		E019B63C1A35DC29000C9A05 /* JSONUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONUtils.m; sourceTree = "<group>"; };
 		E03418011A309B4700F1FED5 /* ClearBlade Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ClearBlade Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 		E03417F81A309B4700F1FED5 = {
 			isa = PBXGroup;
 			children = (
+				E00559B71A72C87100DA3634 /* cblogo_blades_transp.png */,
 				E03418031A309B4700F1FED5 /* ClearBlade Demo */,
 				E034181D1A309B4700F1FED5 /* ClearBlade DemoTests */,
 				E03418021A309B4700F1FED5 /* Products */,
@@ -316,6 +319,7 @@
 			files = (
 				E03418101A309B4700F1FED5 /* Main.storyboard in Resources */,
 				E03418151A309B4700F1FED5 /* LaunchScreen.xib in Resources */,
+				E00559B81A72C87100DA3634 /* cblogo_blades_transp.png in Resources */,
 				E03418121A309B4700F1FED5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +512,8 @@
 			baseConfigurationReference = 8C68DF81CEEB16029991B85A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ClearBlade",
@@ -517,6 +523,7 @@
 				INFOPLIST_FILE = "ClearBlade Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -525,6 +532,8 @@
 			baseConfigurationReference = C61F8D19D0CB760D9E89C49B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ClearBlade",
@@ -534,6 +543,7 @@
 				INFOPLIST_FILE = "ClearBlade Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

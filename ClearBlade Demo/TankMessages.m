@@ -33,9 +33,9 @@
     self.messageClass = @"";
     self.messageType = components[components.count - 1];
     self.messageTarget = @"";
-    if (components.count > 3) {
+    if (components.count > 2) {
         self.messageTarget = components[components.count - 2];
-        self.messageClass = components[1];
+        self.messageClass = components[0];
     }
     self.dict = [JSONUtils strToObj:body];
     return self;
@@ -82,7 +82,7 @@
 @implementation ControllerStateMessage
 
 -(id)initWithController:(NSString *)controller andState:(NSString *)state {
-    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Controller/%@/State", controller]];
+    self = [super initWithTopic:[NSString stringWithFormat:@"Controller/%@/State", controller]];
     self.dict[@"ControllerId"] = controller;
     self.dict[@"State"] = state;
     return self;
@@ -93,7 +93,7 @@
 @implementation TankAskStateMessage
 
 -(id)initWithController:(NSString *)controller {
-    self = [super initWithTopic:@"Dev/Tank/AskState"];
+    self = [super initWithTopic:@"Tank/AskState"];
     self.dict[@"ControllerId"] = controller;
     return self;
 }
@@ -103,7 +103,7 @@
 @implementation TankAskPairMessage
 
 -(id)initWithController:(NSString *)controller andTankId:(NSString *)tankId {
-    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Tank/%@/AskPair", tankId]];
+    self = [super initWithTopic:[NSString stringWithFormat:@"Tank/%@/AskPair", tankId]];
     self.dict[@"ControllerId"] = controller;
     self.dict[@"TankId"] = tankId;
     
@@ -119,7 +119,7 @@
               andTankId:(NSString *)tankId
                andSpeed:(NSInteger)speed
            andDirection:(NSInteger)direction {
-    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Tank/%@/Drive", tankId]];
+    self = [super initWithTopic:[NSString stringWithFormat:@"Tank/%@/Drive", tankId]];
     self.dict[@"ControllerId"] = controller;
     self.dict[@"TankId"] = tankId;
     self.dict[@"Speed"] = [NSNumber numberWithInteger:speed];
@@ -133,7 +133,7 @@
 @implementation TurretMoveMessage
 
 -(id)initWithController:(NSString *)controller andTankId:(NSString *)tankId andDirection:(NSString *)direction {
-    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Tank/%@/TurretMove", tankId]];
+    self = [super initWithTopic:[NSString stringWithFormat:@"Tank/%@/TurretMove", tankId]];
     self.dict[@"ControllerId"] = controller;
     self.dict[@"TankId"] = tankId;
     self.dict[@"Direction"] = direction;
@@ -146,10 +146,20 @@
 @implementation TurretFireMessage
 
 -(id)initWithController:(NSString *)controller andTankId:(NSString *)tankId {
-    self = [super initWithTopic:[NSString stringWithFormat:@"Dev/Tank/%@/TurretFire", tankId]];
+    self = [super initWithTopic:[NSString stringWithFormat:@"Tank/%@/TurretFire", tankId]];
     self.dict[@"ControllerId"] = controller;
     self.dict[@"TankId"] = tankId;
     
+    return self;
+}
+
+@end
+
+@implementation HeartbeatMessage
+
+-(id)initWithController:(NSString *)controller {
+    self = [super initWithTopic:[NSString stringWithFormat:@"Controller/%@/Heartbeat", controller]];
+    self.dict[@"ControllerId"] = controller;
     return self;
 }
 

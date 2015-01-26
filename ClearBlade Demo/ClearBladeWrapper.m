@@ -1,4 +1,4 @@
-//
+
 //  ClearBlade.m
 //  ClearBlade Demo
 //
@@ -23,20 +23,21 @@ NSString * const DOWN_STATE = @"Down"; 			// This is kinda silly
 //
 //  ClearBlade messages that this app publishes
 //
-NSString * const TankAskStatePub = @"Dev/Tank/AskState";
-NSString * const ControllerStatePub = @"Dev/Controller/%@/State";
-NSString * const TankAskPairPub = @"/Dev/Tank/%@/AskPair";
-NSString * const TankUnpairPub = @"/Dev/Tank/%@/Unpair";
-NSString * const TankDrivePub = @"/Dev/Tank/%@/Drive";
-NSString * const TankTurretMovePub = @"/Dev/Tank/%@/TurretMove";
-NSString * const TankTurretFirePub = @"/Dev/Tank/%@/TurretFire";
+NSString * const TankAskStatePub = @"Tank/AskState";
+NSString * const ControllerStatePub = @"Controller/%@/State";
+NSString * const TankAskPairPub = @"Tank/%@/AskPair";
+NSString * const TankUnpairPub = @"Tank/%@/Unpair";
+NSString * const TankDrivePub = @"Tank/%@/Drive";
+NSString * const TankTurretMovePub = @"Tank/%@/TurretMove";
+NSString * const TankTurretFirePub = @"Tank/%@/TurretFire";
+NSString * const ControllerHeartbeatPub=@"Controller/%@/Heartbeat";
 
 //
 //  ClearBlade messages that this app subscribes to
 //
-NSString * const TankStateSub = @"Dev/Tank/+/State";
-NSString * const TankPairSub = @"Dev/Tank/+/Pair";
-NSString * const TankSensorsSub = @"Dev/Tank/+/Sensors";
+NSString * const TankStateSub = @"Tank/+/State";
+NSString * const TankPairSub = @"Tank/+/Pair";
+NSString * const TankSensorsSub = @"Tank/+/Sensors";
 
 //
 //  Field Names in messages
@@ -54,6 +55,7 @@ NSString * const FieldDirection = @"Direction";
 @property (nonatomic, strong) NSString *controllerState;
 @property (nonatomic, assign) NSInteger subscribeCount;
 @property (nonatomic, strong) NSMutableDictionary *tanks;
+@property (nonatomic, strong) NSTimer *heartbeatTimer;
 
 @end
 
@@ -62,11 +64,13 @@ NSString * const FieldDirection = @"Direction";
 -(id) init {
     NSLog(@"ClearBladeWrapper init");
     self = [super init];
-    self.uid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    //self.uid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    self.uid = @"SWMIPAD";
     self.pairedTank = @"";
     self.subscribeCount = 0;
     self.controllerState = UP_STATE;
     self.tanks = [NSMutableDictionary dictionary];
+    self.heartbeatTimer = nil;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTurretFire:)
                                                  name:@"TurretFire" object:nil];
@@ -76,22 +80,12 @@ NSString * const FieldDirection = @"Direction";
                                                  name:@"SpeedAndDirection" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive:) name:@"WillResignActive" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive:) name:@"DidBecomeActive" object:nil];
-    //[self initClearBlade];
-    /*
-    NSError *error;
-    [ClearBlade initSettingsSyncWithSystemKey:@"82f7a8c60ab6b3f49ec4eea1b59801"
-                             withSystemSecret:@"82F7A8C60A88AD98BEDBBDE9BE43"
-                                  withOptions:@{}
-                                    withError:&error];
-    if (error) {
-        NSLog(@"Failed to connect with error %@", error);
-        return self;
-    }
-    self.messageClient = [[CBMessageClient alloc] init];
-    self.messageClient.delegate = self;
-    [self.messageClient connect];
-     */
     return self;
+}
+
+-(void)heartbeatTimer:(NSTimer *)timer {
+    HeartbeatMessage *msg = [[HeartbeatMessage alloc] initWithController:self.uid];
+   	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
 }
 
 -(void)didBecomeActive:(id)sender {
@@ -122,6 +116,10 @@ NSString * const FieldDirection = @"Direction";
 }
 
 -(void)shutdownClearBlade {
+    if (self.heartbeatTimer) {
+        [self.heartbeatTimer invalidate];
+        self.heartbeatTimer = nil;
+    }
     self.controllerState = @"Down";
     ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
     [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
@@ -189,10 +187,10 @@ NSString * const FieldDirection = @"Direction";
         [self sendStateChanged:@"Finding A Tank"];
         self.controllerState = @"Up";
         self.pairedTank = @"";
-        // XXXSWM Send Dev/Controller/<me>/State msg
+        // XXXSWM Send Controller/<me>/State msg
         ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
         [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
-        // Send Dev/Tank/AskState and try to connect with another tank
+        // Send Tank/AskState and try to connect with another tank
         TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
        	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
     }
@@ -222,11 +220,23 @@ NSString * const FieldDirection = @"Direction";
 }
 
 -(void)processTankSensorsMessage:(ReceivedMessage *)msg {
-    
+    // This does get called -- right now we're doing sensor display in the web dashboard
 }
 
 -(void)sendStateChanged:(NSString *)newState {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StateChanged" object:[NSDictionary dictionaryWithObject:newState forKey:@"State"]];
+}
+
+-(void)stopHeartbeatTimer {
+    if (self.heartbeatTimer) {
+        [self.heartbeatTimer invalidate];
+        self.heartbeatTimer = nil;
+    }
+}
+
+-(void)startHeartbeatTimer {
+    [self stopHeartbeatTimer];
+    self.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(heartbeatTimer:) userInfo:nil repeats:YES];
 }
 
 #pragma mark - ClearBlade Message Client Delegate Methods
@@ -238,6 +248,7 @@ NSString * const FieldDirection = @"Direction";
     [client subscribeToTopic:TankStateSub];
     [client subscribeToTopic:TankPairSub];
     [client subscribeToTopic:TankSensorsSub];
+    [self startHeartbeatTimer];
 }
 
 -(void)messageClientDidDisconnect:(CBMessageClient *)client {
@@ -263,6 +274,9 @@ NSString * const FieldDirection = @"Direction";
 -(void)messageClient:(CBMessageClient *)client didSubscribe:(NSString *)topic {
     NSLog(@"didSubscribe");
     if (-- self.subscribeCount <= 0) {
+        self.controllerState = @"Up";
+        ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
+        [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
         [self sendStateChanged:@"Finding A Tank"];
         TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
        	[client publishMessage:[msg body] toTopic:[msg topic]];
