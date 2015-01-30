@@ -41,6 +41,10 @@
     return self;
 }
 
+-(NSDictionary *)asDict {
+    return self.dict;
+}
+
 -(BOOL)messageIsA:(NSString *)msgBaseName {
     return [self.messageType isEqualToString:msgBaseName] && [self.messageClass isEqualToString:@"Tank"];
 }

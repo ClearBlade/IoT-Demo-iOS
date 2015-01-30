@@ -307,7 +307,8 @@ withErrorCallback:(CBQueryErrorCallback)errorCallback {
     [insertRequest setHTTPBody:jsonData];
     [insertRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [insertRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    CBLogDebug(@"Inserting %@ into collection %@", item, collectionID);
+    //CBLogDebug(@"Inserting %@ into collection %@", item, collectionID);
+    NSLog(@"Request: %@: Inserting %@ into collection %@", insertRequest, item, collectionID);
     [self executeOperation:insertRequest withSuccessCallback:successCallback withFailureCallback:errorCallback];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CBQuery.h>
 #import <CBAPI.h>
 
 @interface ClearBladeWrapper : NSObject <CBMessageClientDelegate>

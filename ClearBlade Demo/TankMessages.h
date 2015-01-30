@@ -15,6 +15,7 @@
 -(id)component:(NSString *)key;
 -(NSString *)target;
 -(void)dump;
+-(NSDictionary *)asDict;
   
 @end
 

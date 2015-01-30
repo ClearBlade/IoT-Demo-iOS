@@ -13,6 +13,15 @@
 #import "TankMessages.h"
 
 //
+//  The ClearBlade sensor collection info
+//
+NSString * const UserCollectionId = @"bcc6aac60aacffdce2a4f6fcab02";
+NSString * const SensorCollectionId = @"fcf4becc0aa6e3c3a181fca2f1ab01";
+NSString * const SensorFieldId = @"item_id";
+NSString * const SensorFieldTimestamp = @"timestanp";
+NSString * const SensorFieldRawData = @"rawdata";
+
+//
 //  App States
 //
 NSString * const UP_STATE = @"Up";
@@ -56,6 +65,8 @@ NSString * const FieldDirection = @"Direction";
 @property (nonatomic, assign) NSInteger subscribeCount;
 @property (nonatomic, strong) NSMutableDictionary *tanks;
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
+@property (nonatomic, strong) CBCollection *sensorCol;
+@property (nonatomic, strong) CBCollection *userCol;
 
 @end
 
@@ -71,6 +82,8 @@ NSString * const FieldDirection = @"Direction";
     self.controllerState = UP_STATE;
     self.tanks = [NSMutableDictionary dictionary];
     self.heartbeatTimer = nil;
+    self.sensorCol = nil;
+    self.userCol = nil;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTurretFire:)
                                                  name:@"TurretFire" object:nil];
@@ -102,9 +115,14 @@ NSString * const FieldDirection = @"Direction";
     self.subscribeCount = 0;
     self.controllerState = UP_STATE;
     NSError *error;
+    /*
+    NSMutableDictionary *userPass = [NSMutableDictionary dictionary];
+    userPass[CBSettingsOptionEmail] = @"tank@clearblade.com";
+    userPass[CBSettingsOptionPassword] = @"IAmATank";
+     */
     [ClearBlade initSettingsSyncWithSystemKey:@"82f7a8c60ab6b3f49ec4eea1b59801"
                              withSystemSecret:@"82F7A8C60A88AD98BEDBBDE9BE43"
-                                  withOptions:@{}
+                                  withOptions:nil //userPass
                                     withError:&error];
     if (error) {
         NSLog(@"Failed to connect with error %@", error);
@@ -112,14 +130,19 @@ NSString * const FieldDirection = @"Direction";
     }
     self.messageClient = [[CBMessageClient alloc] init];
     self.messageClient.delegate = self;
+    self.userCol = [CBCollection collectionWithID:UserCollectionId];
+    [self checkUser:@"Manny"];
+    self.sensorCol = [CBCollection collectionWithID:SensorCollectionId];
+    if (!self.sensorCol) {
+        NSLog(@"Could not open sensor collection");
+    } else {
+        NSLog(@"Successfully opened sensor collection");
+    }
     [self.messageClient connect];
 }
 
 -(void)shutdownClearBlade {
-    if (self.heartbeatTimer) {
-        [self.heartbeatTimer invalidate];
-        self.heartbeatTimer = nil;
-    }
+    [self stopHeartbeatTimer];
     self.controllerState = @"Down";
     ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
     [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
@@ -219,8 +242,25 @@ NSString * const FieldDirection = @"Direction";
     }
 }
 
+-(void)writeToSensorCollection:(ReceivedMessage *)msg {
+    if (!self.sensorCol) {
+        NSLog(@"Ignoring sensor write because we do not have a collection connection");
+        return;
+    }
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    data[SensorFieldRawData] = [JSONUtils objToStr:[msg asDict]];
+    //data[SensorFieldRawData] = @"This is some data";
+    NSLog(@"Trying to write: %@", data);
+    [self.sensorCol createWithData:data withSuccessCallback:^(CBItem *newItem) {
+        NSLog(@"Successfully wrote to sensor collection");
+    }withErrorCallback:^(CBItem *item, NSError *error, id JSON) {
+        NSLog(@"Sensor write failed: %@: %@", error, JSON);
+    }];
+}
+
 -(void)processTankSensorsMessage:(ReceivedMessage *)msg {
-    // This does get called -- right now we're doing sensor display in the web dashboard
+    //  Just shove each sensor message into the db...
+    [self writeToSensorCollection:msg];
 }
 
 -(void)sendStateChanged:(NSString *)newState {
@@ -237,6 +277,28 @@ NSString * const FieldDirection = @"Direction";
 -(void)startHeartbeatTimer {
     [self stopHeartbeatTimer];
     self.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(heartbeatTimer:) userInfo:nil repeats:YES];
+}
+
+-(void) checkUser: (NSString *) userString {
+    //Sets up the query to be on the same collection as userCol
+    CBQuery *userQuery = [CBQuery queryWithCollectionID:[self.userCol collectionID]];
+    [userQuery equalTo:userString for:@"username"]; //Adds the query parameter that username must be equal to the userString
+                                                    //Searches for all users with the same username
+    [userQuery fetchWithSuccessCallback:^(CBQueryResponse *successfulResponse) {
+        NSMutableArray *foundUsers = successfulResponse.dataItems; // Pull the array of items matching the query out of the response object
+                                                                   //If foundUsers count is zero, means no one else has logged in with that username before
+        if (foundUsers.count == 0) {
+            [self.userCol createWithData:@{@"username": userString} withSuccessCallback:^(CBItem *newUser) {
+                NSLog(@"new user created");
+            } withErrorCallback:^(CBItem * item, NSError *err, id ret) {
+                NSLog(@"ERROR: %@: %@", err, ret);
+            }];
+        } else {
+            //foundUsers is greater than zero so someone has logged in with this username at least once.
+        }
+    } withErrorCallback:^(NSError *error, id JSON) {
+        NSLog(@"ERROR: %@: %@", error, JSON);
+    }];
 }
 
 #pragma mark - ClearBlade Message Client Delegate Methods
