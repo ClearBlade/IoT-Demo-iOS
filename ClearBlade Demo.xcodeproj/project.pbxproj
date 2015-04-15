@@ -30,7 +30,6 @@
 		E0CD499A1A3205EB00BDE805 /* ControlTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49991A3205EB00BDE805 /* ControlTypeViewController.m */; };
 		E0CD499D1A3238E100BDE805 /* TouchProcessorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD499C1A3238E100BDE805 /* TouchProcessorView.m */; };
 		E0CD49A21A325AC900BDE805 /* ControlMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E0CD49A11A325AC900BDE805 /* ControlMessage.m */; };
-		E0D2BF591A391061007C919C /* Tank.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D2BF581A391061007C919C /* Tank.m */; };
 		E0D2BF5C1A3A21A9007C919C /* TankMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D2BF5B1A3A21A9007C919C /* TankMessages.m */; };
 		E3675AC01FD4CC7160C725DA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B73B80F5235DCF39FBB4E8A7 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -90,8 +89,6 @@
 		E0CD499C1A3238E100BDE805 /* TouchProcessorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchProcessorView.m; sourceTree = "<group>"; };
 		E0CD49A01A325AC900BDE805 /* ControlMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlMessage.h; sourceTree = "<group>"; };
 		E0CD49A11A325AC900BDE805 /* ControlMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlMessage.m; sourceTree = "<group>"; };
-		E0D2BF571A391061007C919C /* Tank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tank.h; sourceTree = "<group>"; };
-		E0D2BF581A391061007C919C /* Tank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tank.m; sourceTree = "<group>"; };
 		E0D2BF5A1A3A21A9007C919C /* TankMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankMessages.h; sourceTree = "<group>"; };
 		E0D2BF5B1A3A21A9007C919C /* TankMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankMessages.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,8 +189,6 @@
 				E0ABDD1C1A3340DD007F40AB /* ClearBladeWrapper.m */,
 				E019B63B1A35DC29000C9A05 /* JSONUtils.h */,
 				E019B63C1A35DC29000C9A05 /* JSONUtils.m */,
-				E0D2BF571A391061007C919C /* Tank.h */,
-				E0D2BF581A391061007C919C /* Tank.m */,
 				E0D2BF5A1A3A21A9007C919C /* TankMessages.h */,
 				E0D2BF5B1A3A21A9007C919C /* TankMessages.m */,
 				E0C9D9201A56F03200DB63EF /* MyoWrapper.h */,
@@ -376,7 +371,6 @@
 				E0CD498E1A31FEE700BDE805 /* SingleHandViewController.m in Sources */,
 				E0CD498B1A31FCBA00BDE805 /* EmptySegue.m in Sources */,
 				E0CD49941A3200DC00BDE805 /* TurretCannonView.m in Sources */,
-				E0D2BF591A391061007C919C /* Tank.m in Sources */,
 				E0CD499A1A3205EB00BDE805 /* ControlTypeViewController.m in Sources */,
 				E034182C1A30AF6C00F1FED5 /* OneTouchControlView.m in Sources */,
 				E0CD499D1A3238E100BDE805 /* TouchProcessorView.m in Sources */,
@@ -521,6 +515,7 @@
 					"/Users/swm/Downloads/Myo-iOS-SDK-0.4.0",
 				);
 				INFOPLIST_FILE = "ClearBlade Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -541,6 +536,7 @@
 					"/Users/swm/Downloads/Myo-iOS-SDK-0.4.0",
 				);
 				INFOPLIST_FILE = "ClearBlade Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

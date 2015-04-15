@@ -21,6 +21,7 @@
 
 static int direction = 1;
 static bool attached = false;
+static bool enabled = false;
 
 -(void)attachOrDetach {
     if (!attached) {
@@ -89,11 +90,9 @@ static bool attached = false;
 }
 
 -(void)connectWithRect:(CGRect)rect inView:(UIView *)view {
-    /* SWM FOR NOW DON'T DO THIS
     self.popover = [TLMSettingsViewController settingsInPopoverController];
     [self.popover presentPopoverFromRect:rect inView:view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     NSLog(@"Popover should be displayed");
-     */
 }
 
 -(void)didConnectDevice:(NSNotification *)notif {
@@ -137,6 +136,7 @@ static bool attached = false;
 
 -(void)didReceivePoseChange:(NSNotification *)notif {
     NSString *poseName = @"Undefined";
+    NSString *enabledDisabled = enabled ? @"+" : @"-";
     TLMPose *pose = notif.userInfo[kTLMKeyPose];
     switch (pose.type) {
         case TLMPoseTypeUnknown:
@@ -148,30 +148,41 @@ static bool attached = false;
             break;
         case TLMPoseTypeDoubleTap:
             poseName = @"Double Tap";
+            if (!enabled) break;
             direction = -direction;
             break;
         case TLMPoseTypeFist:
+            enabled = !enabled;
+            enabledDisabled = enabled ? @"+" : @"-";
             poseName = @"Fist";
+            [ControlMessage generateMessageFromSingleInput:@"Motion" withSpeed:0 withDirection:0];
+            break;
+            /*
             [ControlMessage generateFireMessage];
             break;
+             */
         case TLMPoseTypeWaveIn:
             poseName = @"Wave In";
-            [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:direction*100 withRight:direction*40];
+            if (!enabled) break;
+            [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:direction*100 withRight:direction*-100];
             break;
         case TLMPoseTypeWaveOut:
             poseName = @"Wave Out";
-            [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:direction*40 withRight:direction*100];
+            if (!enabled) break;
+            [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:direction*-100 withRight:direction*100];
             break;
         case TLMPoseTypeFingersSpread:
-            [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:direction *100 withRight:direction*100];
             poseName = @"Fingers Spread";
+            if (!enabled) break;
+            [ControlMessage generateMessageFromDualInput:@"Motion" withLeft:direction*100 withRight:direction*100];
             break;
         default:
             poseName = @"WTF???";
             break;
     }
+    NSString *thePose = [NSString stringWithFormat:@"%@%@", enabledDisabled, poseName];
     NSLog(@"Pose: %@", poseName);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"MyoPoseChanged" object:[NSDictionary dictionaryWithObject:poseName forKey:@"Pose"]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MyoPoseChanged" object:[NSDictionary dictionaryWithObject:thePose forKey:@"Pose"]];
 }
 
 

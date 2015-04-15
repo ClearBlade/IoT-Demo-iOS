@@ -35,7 +35,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    [self.myo connectWithRect:[self.topDashboardView frame] inView:self.view];
+    //[self.myo connectWithRect:[self.topDashboardView frame] inView:self.view];
     [self setupControlsSwitcher];
     [self setupLabels];
 }

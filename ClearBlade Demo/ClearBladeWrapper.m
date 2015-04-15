@@ -12,6 +12,8 @@
 #import <UIKit/UIKit.h>
 #import "TankMessages.h"
 
+NSInteger const MaxHeartbeatLag = 3;
+
 //
 //  The ClearBlade sensor collection info
 //
@@ -47,6 +49,7 @@ NSString * const ControllerHeartbeatPub=@"Controller/%@/Heartbeat";
 NSString * const TankStateSub = @"Tank/+/State";
 NSString * const TankPairSub = @"Tank/+/Pair";
 NSString * const TankSensorsSub = @"Tank/+/Sensors";
+NSString * const TankHeartbeatActSub = @"Tank/+/HeartbeatAck";
 
 //
 //  Field Names in messages
@@ -65,8 +68,12 @@ NSString * const FieldDirection = @"Direction";
 @property (nonatomic, assign) NSInteger subscribeCount;
 @property (nonatomic, strong) NSMutableDictionary *tanks;
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
+@property (nonatomic, strong) NSTimer *repeatSendTimer;
 @property (nonatomic, strong) CBCollection *sensorCol;
 @property (nonatomic, strong) CBCollection *userCol;
+@property (nonatomic, assign) NSInteger heartbeatLagCount;
+@property (nonatomic, assign) NSInteger lastSpeed;
+@property (nonatomic, assign) NSInteger lastDirection;
 
 @end
 
@@ -82,8 +89,12 @@ NSString * const FieldDirection = @"Direction";
     self.controllerState = UP_STATE;
     self.tanks = [NSMutableDictionary dictionary];
     self.heartbeatTimer = nil;
+    self.repeatSendTimer = nil;
     self.sensorCol = nil;
     self.userCol = nil;
+    self.heartbeatLagCount = 0;
+    self.lastSpeed = 0;
+    self.lastDirection = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTurretFire:)
                                                  name:@"TurretFire" object:nil];
@@ -99,6 +110,23 @@ NSString * const FieldDirection = @"Direction";
 -(void)heartbeatTimer:(NSTimer *)timer {
     HeartbeatMessage *msg = [[HeartbeatMessage alloc] initWithController:self.uid];
    	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
+    if (![self.pairedTank isEqualToString:@""]) {
+        self.heartbeatLagCount ++;
+        if (self.heartbeatLagCount > MaxHeartbeatLag) {
+            [self unpair];
+        }
+    }
+}
+
+-(void) repeatSend:(NSTimer *)timer {
+    if ([self.pairedTank isEqualToString:@""]) {
+        return;
+    }
+    TankDriveMessage *driveMsg = [[TankDriveMessage alloc] initWithController:self.uid
+                                                                    andTankId:self.pairedTank
+                                                                     andSpeed:self.lastSpeed
+                                                                 andDirection:self.lastDirection];
+   	[self.messageClient publishMessage:[driveMsg body] toTopic:[driveMsg topic]];
 }
 
 -(void)didBecomeActive:(id)sender {
@@ -115,11 +143,6 @@ NSString * const FieldDirection = @"Direction";
     self.subscribeCount = 0;
     self.controllerState = UP_STATE;
     NSError *error;
-    /*
-    NSMutableDictionary *userPass = [NSMutableDictionary dictionary];
-    userPass[CBSettingsOptionEmail] = @"tank@clearblade.com";
-    userPass[CBSettingsOptionPassword] = @"IAmATank";
-     */
     [ClearBlade initSettingsSyncWithSystemKey:@"82f7a8c60ab6b3f49ec4eea1b59801"
                              withSystemSecret:@"82F7A8C60A88AD98BEDBBDE9BE43"
                                   withOptions:nil //userPass
@@ -157,10 +180,12 @@ NSString * const FieldDirection = @"Direction";
         return;
     }
     NSDictionary *msg = (NSDictionary *)notif.object;
+    self.lastSpeed = [msg[@"Speed"] integerValue];
+    self.lastDirection = [msg[@"Direction"] integerValue];
     TankDriveMessage *driveMsg = [[TankDriveMessage alloc] initWithController:self.uid
                                                                     andTankId:self.pairedTank
-                                                                     andSpeed:[msg[@"Speed"] integerValue]
-                                                                 andDirection:[msg[@"Direction"] integerValue]];
+                                                                     andSpeed:self.lastSpeed
+                                                                 andDirection:self.lastDirection];
     
    	[self.messageClient publishMessage:[driveMsg body] toTopic:[driveMsg topic]];
 }
@@ -195,6 +220,8 @@ NSString * const FieldDirection = @"Direction";
 -(void)processTankStateMessage:(ReceivedMessage *)msg {
     NSString *tankId = [msg target];
     NSString *tankState = [msg component:@"State"];
+    NSString *tankIpAddr = [msg component:@"IpAddr"];
+    NSLog(@"TANK IP ADDRESS IS %@\n", tankIpAddr);
     self.tanks[tankId] = tankState;
     if ([self.controllerState isEqualToString:@"Up"] &&
         [tankState isEqualToString:@"Up"]) {
@@ -207,15 +234,7 @@ NSString * const FieldDirection = @"Direction";
        	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
     } else if ([tankId isEqualToString:self.pairedTank] && ![tankState isEqualToString:@"Paired"]) {
         // Tank crashed or something -- unpair
-        [self sendStateChanged:@"Finding A Tank"];
-        self.controllerState = @"Up";
-        self.pairedTank = @"";
-        // XXXSWM Send Controller/<me>/State msg
-        ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
-        [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
-        // Send Tank/AskState and try to connect with another tank
-        TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
-       	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
+        [self unpair];
     }
 }
 
@@ -227,18 +246,37 @@ NSString * const FieldDirection = @"Direction";
         return;
     }
     if ([pairResponse isEqualToString:@"Yes"]) {
-        [self sendStateChanged:@"Paired With Tank"];
-        self.controllerState = @"Paired";
-        self.pairedTank = tankId;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TankPaired" object:nil];
+        NSString *ipAddr = [msg component:@"IpAddr"];
+        [self pair:tankId withIpAddr:ipAddr];
         
     } else {
         //  Pairing failed. Start the discovery process all over again...
-        [self sendStateChanged:@"Finding A Tank"];
-        self.controllerState = @"Up";
-        self.pairedTank = @"";
-        TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
-       	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
+        [self unpair];
+    }
+}
+-(void)pair:(NSString *)tankId withIpAddr:(NSString *)ipAddr {
+    [self sendStateChanged:[NSString stringWithFormat:@"Paired: %@", ipAddr]];
+    self.controllerState = @"Paired";
+    self.pairedTank = tankId;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TankPaired" object:nil];
+    self.heartbeatLagCount = 0;
+    if (self.repeatSendTimer) {
+        [self.repeatSendTimer invalidate];
+    }
+    self.repeatSendTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(repeatSend:) userInfo:nil repeats:YES];
+}
+
+-(void) unpair {
+    [self sendStateChanged:@"Finding a Tank"];
+    self.controllerState = @"Up";
+    self.pairedTank = @"";
+    TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
+   	[self.messageClient publishMessage:[msg body] toTopic:[msg topic]];
+    ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
+    [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
+    if (self.repeatSendTimer) {
+        [self.repeatSendTimer invalidate];
+        self.repeatSendTimer = nil;
     }
 }
 
@@ -263,6 +301,13 @@ NSString * const FieldDirection = @"Direction";
     [self writeToSensorCollection:msg];
 }
 
+-(void)processTankHeartbeatAckMessage:(ReceivedMessage *)msg {
+    NSString *tankId = [msg target];
+    if ([tankId isEqualToString:self.pairedTank]) {
+        self.heartbeatLagCount --;
+    }
+}
+
 -(void)sendStateChanged:(NSString *)newState {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StateChanged" object:[NSDictionary dictionaryWithObject:newState forKey:@"State"]];
 }
@@ -277,6 +322,7 @@ NSString * const FieldDirection = @"Direction";
 -(void)startHeartbeatTimer {
     [self stopHeartbeatTimer];
     self.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(heartbeatTimer:) userInfo:nil repeats:YES];
+    self.heartbeatLagCount = 0;
 }
 
 -(void) checkUser: (NSString *) userString {
@@ -306,10 +352,11 @@ NSString * const FieldDirection = @"Direction";
 -(void)messageClientDidConnect:(CBMessageClient *)client {
     [self sendStateChanged:@"Connected"];
     NSLog(@"messageClientDidConnect");
-    self.subscribeCount = 3;
+    self.subscribeCount = 4; // Hack Hack
     [client subscribeToTopic:TankStateSub];
     [client subscribeToTopic:TankPairSub];
     [client subscribeToTopic:TankSensorsSub];
+    [client subscribeToTopic:TankHeartbeatActSub];
     [self startHeartbeatTimer];
 }
 
@@ -330,18 +377,15 @@ NSString * const FieldDirection = @"Direction";
         [self processTankPairMessage:msg];
     } else if ([msg messageIsA:@"Sensors"]) {
         [self processTankSensorsMessage:msg];
+    } else if ([msg messageIsA:@"HeartbeatAck"]) {
+        [self processTankHeartbeatAckMessage:msg];
     }
 }
 
 -(void)messageClient:(CBMessageClient *)client didSubscribe:(NSString *)topic {
     NSLog(@"didSubscribe");
     if (-- self.subscribeCount <= 0) {
-        self.controllerState = @"Up";
-        ControllerStateMessage *cMsg = [[ControllerStateMessage alloc] initWithController:self.uid andState:self.controllerState];
-        [self.messageClient publishMessage:[cMsg body] toTopic:[cMsg topic]];
-        [self sendStateChanged:@"Finding A Tank"];
-        TankAskStateMessage *msg = [[TankAskStateMessage alloc] initWithController:self.uid];
-       	[client publishMessage:[msg body] toTopic:[msg topic]];
+        [self unpair];
     }
 }
 
